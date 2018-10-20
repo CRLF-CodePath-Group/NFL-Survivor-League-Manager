@@ -14,20 +14,20 @@ Time spent: **X** hours spent in total
 ## User Stories
 
 The following **required** functionality is completed:
--[ ] New users can create an account or existing users can return and log back in.
--[ ] User is brought to main hub that they can see: leagues they are in, leagues they manage, and a button to create a new league
--[ ] Users can create their own league
--[ ] Users can invite others to join their league
--[ ] Users can view details of leagues they are in, and select their picks for the week(but cannot see others picks)
--[ ] Managers screen can make their pick, and see stats on which teams were picked and who still needs to pick
--[ ] Set up NFL API to automatically get NFL schedule and W/L for each week.
+- [ ] New users can create an account or existing users can return and log back in.
+- [ ] User is brought to main hub that they can see: leagues they are in, leagues they manage, and a button to create a new league
+- [ ] Users can create their own league
+- [ ] Users can invite others to join their league
+- [ ] Users can view details of leagues they are in, and select their picks for the week(but cannot see others picks)
+- [ ] Managers screen can make their pick, and see stats on which teams were picked and who still needs to pick
+- [ ] Set up NFL API to automatically get NFL schedule and W/L for each week.
 
 The following **stretch** features are implemented:
--[ ] Retractable side bar menu with all options and settings available
--[ ] Turn hub into a notification screen for information going on in leagues
--[ ] Move leagues managed and particpating in to two seperate stories, accessed by retractable side bar menu
--[ ] Group chat for individual leagues
--[ ] User profile with avatar and stats on their particpation in leagues
+- [ ] Retractable side bar menu with all options and settings available
+- [ ] Turn hub into a notification screen for information going on in leagues
+- [ ] Move leagues managed and particpating in to two seperate stories, accessed by retractable side bar menu
+- [ ] Group chat for individual leagues
+- [ ] User profile with avatar and stats on their particpation in leagues
 
 
 
