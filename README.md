@@ -30,6 +30,29 @@ The following **stretch** features are implemented:
 - [ ] User profile with avatar and stats on their particpation in leagues
 
 
+## Tables
+There will be two tables stored in the database, one being for users and the other being leagues.
+
+Users consists of:
+Screenname, string
+Email, string
+password
+list of league ids, int
+
+Leagues consists of:
+leaguename, string
+owner, string
+currentWeek, int
+list of alive users, user
+list of eliminated users, user
+an array of lists, each array spot representing an NFL week, and each list containing picks. A pick is a pair of username and a team name
+
+
+## APIs
+This project will use the Parse pod hosted on Heroku for database storage.
+This project also gathers NFL data provided by [MySportsFeeds](https://www.mysportsfeeds.com/data-feeds/api-docs/)
+
+
 
 ## Video Walkthrough
 
