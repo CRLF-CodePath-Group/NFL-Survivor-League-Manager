@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B655C0A21A921A900065B94 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0921A921A900065B94 /* Schedule.swift */; };
 		5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B717367217AC283009BEC6D /* AppDelegate.swift */; };
 		5B71736A217AC283009BEC6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B717369217AC283009BEC6D /* ViewController.swift */; };
 		5B71736D217AC283009BEC6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B71736B217AC283009BEC6D /* Main.storyboard */; };
 		5B71736F217AC286009BEC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B71736E217AC286009BEC6D /* Assets.xcassets */; };
 		5B717372217AC286009BEC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B717370217AC286009BEC6D /* LaunchScreen.storyboard */; };
+		5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B90BF8321A8FE1B0085DF73 /* Game.swift */; };
+		5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B655C0921A921A900065B94 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5B717364217AC283009BEC6D /* NFL-Survivor-League-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NFL-Survivor-League-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B717367217AC283009BEC6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B717369217AC283009BEC6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		5B71736E217AC286009BEC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B717371217AC286009BEC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B717373217AC286009BEC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B90BF8321A8FE1B0085DF73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		5B717366217AC283009BEC6D /* NFL-Survivor-League-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				5B90BF8721A8FE520085DF73 /* APIManagers */,
 				5B71737A217AC2A7009BEC6D /* ViewControllers */,
 				5B717379217AC28E009BEC6D /* Models */,
 				5B717367217AC283009BEC6D /* AppDelegate.swift */,
@@ -68,6 +75,8 @@
 		5B717379217AC28E009BEC6D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B90BF8321A8FE1B0085DF73 /* Game.swift */,
+				5B655C0921A921A900065B94 /* Schedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -78,6 +87,14 @@
 				5B717369217AC283009BEC6D /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5B90BF8721A8FE520085DF73 /* APIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */,
+			);
+			path = APIManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B71736A217AC283009BEC6D /* ViewController.swift in Sources */,
+				5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */,
 				5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */,
+				5B655C0A21A921A900065B94 /* Schedule.swift in Sources */,
+				5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
