@@ -54,14 +54,30 @@
 		5B717366217AC283009BEC6D /* NFL-Survivor-League-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				5B71737A217AC2A7009BEC6D /* ViewControllers */,
+				5B717379217AC28E009BEC6D /* Models */,
 				5B717367217AC283009BEC6D /* AppDelegate.swift */,
-				5B717369217AC283009BEC6D /* ViewController.swift */,
 				5B71736B217AC283009BEC6D /* Main.storyboard */,
 				5B71736E217AC286009BEC6D /* Assets.xcassets */,
 				5B717370217AC286009BEC6D /* LaunchScreen.storyboard */,
 				5B717373217AC286009BEC6D /* Info.plist */,
 			);
 			path = "NFL-Survivor-League-Manager";
+			sourceTree = "<group>";
+		};
+		5B717379217AC28E009BEC6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B71737A217AC2A7009BEC6D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B717369217AC283009BEC6D /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
