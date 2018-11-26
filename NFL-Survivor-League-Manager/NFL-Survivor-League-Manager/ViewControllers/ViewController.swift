@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NFLAPIManager().grabFullNFLSeason { (gane, error) in
+        NFLAPIManager().grabFullNFLSeason { (schedule, error) in
             
         }
         // Do any additional setup after loading the view, typically from a nib.

@@ -8,8 +8,18 @@
 
 import Foundation
 
-var games = [Game]()
+
 
 class Schedule {
-    
+    static var games = [[Game]]()
+    init(_ gameDictionaryArray: [[String: Any]]) {
+        for _ in 0...16 {
+            let test = [Game]()
+            Schedule.games.append(test)
+        }
+        for gameDictionary in gameDictionaryArray {
+           let game = Game(gameDictionary)
+           Schedule.games[game.week-1].append(game)
+        }
+    }
 }

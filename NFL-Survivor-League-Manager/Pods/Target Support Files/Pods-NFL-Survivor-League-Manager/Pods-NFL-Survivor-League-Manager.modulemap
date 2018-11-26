@@ -1,0 +1,6 @@
+framework module Pods_NFL_Survivor_League_Manager {
+  umbrella header "Pods-NFL-Survivor-League-Manager-umbrella.h"
+
+  export *
+  module * { export * }
+}

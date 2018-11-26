@@ -15,12 +15,12 @@ class NFLAPIManager {
     
     
 
-    func grabFullNFLSeason(completion: ([Game]?, Error?) -> ()) {
+    func grabFullNFLSeason(completion: @escaping(Schedule?, Error?) -> ()) {
         let passwordString = "\(NFLAPIManager.apiKey):\(NFLAPIManager.password)"
         let passwordData = passwordString.data(using: String.Encoding.ascii)
         let base64Pass = passwordData?.base64EncodedString()
         let base64Password = base64Pass!
-        print(base64Password)
+        //print(base64Password)
         let url = URL(string: NFLAPIManager.baseURL)!
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let config = URLSessionConfiguration.default
@@ -28,29 +28,18 @@ class NFLAPIManager {
         let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
         request.httpMethod = "GET"
         let task = session.dataTask(with: request) { (data, response, error) in
-            
             if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 let gamesArrayOfDictionarys = dataDictionary["games"] as? [[String : Any]]
-                for games in gamesArrayOfDictionarys! {
-                    print("************")
-                    let game = games["schedule"] as? [String: Any]
-                    print(game!["homeTeam"])
-                    print(game!["awayTeam"])
-                    print("**************")
-                }
+                //print(gamesArrayOfDictionarys)
+                let schedule = Schedule(gamesArrayOfDictionarys!)
+                completion(schedule, nil)
             }
             if let error = error {
                 print(error.localizedDescription)
-            }
-            if let response = response {
-                //print(response)
+                completion(nil, error)
             }
         }
         task.resume()
-        //request.setValue("Basic \(base64Password)", forHTTPHeaderField: "Authorization")
-        
-        
     }
-    
 }

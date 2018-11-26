@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		469F166B70B98160F7100AAF /* Pods_NFL_Survivor_League_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */; };
 		5B655C0A21A921A900065B94 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0921A921A900065B94 /* Schedule.swift */; };
+		5B655C0C21A92CC400065B94 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0B21A92CC400065B94 /* Team.swift */; };
+		5B655C0E21ABC5D200065B94 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0D21ABC5D200065B94 /* LoginViewController.swift */; };
+		5B655C1021ABC5DF00065B94 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0F21ABC5DF00065B94 /* SignUpViewController.swift */; };
+		5B655C1221ABC5F500065B94 /* MainHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C1121ABC5F500065B94 /* MainHubViewController.swift */; };
+		5B655C1421ABC73E00065B94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C1321ABC73E00065B94 /* User.swift */; };
+		5B655C1621ABC75E00065B94 /* ParseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C1521ABC75E00065B94 /* ParseAPIManager.swift */; };
 		5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B717367217AC283009BEC6D /* AppDelegate.swift */; };
-		5B71736A217AC283009BEC6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B717369217AC283009BEC6D /* ViewController.swift */; };
 		5B71736D217AC283009BEC6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B71736B217AC283009BEC6D /* Main.storyboard */; };
 		5B71736F217AC286009BEC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B71736E217AC286009BEC6D /* Assets.xcassets */; };
 		5B717372217AC286009BEC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B717370217AC286009BEC6D /* LaunchScreen.storyboard */; };
@@ -18,16 +24,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0133CBE5AE5C8944FABDB749 /* Pods-NFL-Survivor-League-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFL-Survivor-League-Manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager.release.xcconfig"; sourceTree = "<group>"; };
 		5B655C0921A921A900065B94 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		5B655C0B21A92CC400065B94 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		5B655C0D21ABC5D200065B94 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5B655C0F21ABC5DF00065B94 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5B655C1121ABC5F500065B94 /* MainHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHubViewController.swift; sourceTree = "<group>"; };
+		5B655C1321ABC73E00065B94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5B655C1521ABC75E00065B94 /* ParseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseAPIManager.swift; sourceTree = "<group>"; };
 		5B717364217AC283009BEC6D /* NFL-Survivor-League-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NFL-Survivor-League-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B717367217AC283009BEC6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B717369217AC283009BEC6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5B71736C217AC283009BEC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B71736E217AC286009BEC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B717371217AC286009BEC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B717373217AC286009BEC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B90BF8321A8FE1B0085DF73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLAPIManager.swift; sourceTree = "<group>"; };
+		AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NFL_Survivor_League_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F7010FB42712D6C501F35A /* Pods-NFL-Survivor-League-Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFL-Survivor-League-Manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469F166B70B98160F7100AAF /* Pods_NFL_Survivor_League_Manager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +61,8 @@
 			children = (
 				5B717366217AC283009BEC6D /* NFL-Survivor-League-Manager */,
 				5B717365217AC283009BEC6D /* Products */,
+				C2456B287D5F1B2D42C28B75 /* Pods */,
+				F29EAF4EFA8F97AE897D4A25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +94,8 @@
 			children = (
 				5B90BF8321A8FE1B0085DF73 /* Game.swift */,
 				5B655C0921A921A900065B94 /* Schedule.swift */,
+				5B655C0B21A92CC400065B94 /* Team.swift */,
+				5B655C1321ABC73E00065B94 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -84,7 +103,9 @@
 		5B71737A217AC2A7009BEC6D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B717369217AC283009BEC6D /* ViewController.swift */,
+				5B655C0D21ABC5D200065B94 /* LoginViewController.swift */,
+				5B655C0F21ABC5DF00065B94 /* SignUpViewController.swift */,
+				5B655C1121ABC5F500065B94 /* MainHubViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -93,8 +114,26 @@
 			isa = PBXGroup;
 			children = (
 				5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */,
+				5B655C1521ABC75E00065B94 /* ParseAPIManager.swift */,
 			);
 			path = APIManagers;
+			sourceTree = "<group>";
+		};
+		C2456B287D5F1B2D42C28B75 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1F7010FB42712D6C501F35A /* Pods-NFL-Survivor-League-Manager.debug.xcconfig */,
+				0133CBE5AE5C8944FABDB749 /* Pods-NFL-Survivor-League-Manager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F29EAF4EFA8F97AE897D4A25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B717376217AC286009BEC6D /* Build configuration list for PBXNativeTarget "NFL-Survivor-League-Manager" */;
 			buildPhases = (
+				B4C787F3973F870762DCD2A9 /* [CP] Check Pods Manifest.lock */,
 				5B717360217AC283009BEC6D /* Sources */,
 				5B717361217AC283009BEC6D /* Frameworks */,
 				5B717362217AC283009BEC6D /* Resources */,
+				B43B926729B1F33F20F8B246 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,13 +204,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B43B926729B1F33F20F8B246 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4C787F3973F870762DCD2A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NFL-Survivor-League-Manager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5B717360217AC283009BEC6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B71736A217AC283009BEC6D /* ViewController.swift in Sources */,
+				5B655C0E21ABC5D200065B94 /* LoginViewController.swift in Sources */,
+				5B655C1221ABC5F500065B94 /* MainHubViewController.swift in Sources */,
+				5B655C1021ABC5DF00065B94 /* SignUpViewController.swift in Sources */,
+				5B655C0C21A92CC400065B94 /* Team.swift in Sources */,
 				5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */,
+				5B655C1421ABC73E00065B94 /* User.swift in Sources */,
+				5B655C1621ABC75E00065B94 /* ParseAPIManager.swift in Sources */,
 				5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */,
 				5B655C0A21A921A900065B94 /* Schedule.swift in Sources */,
 				5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */,
@@ -314,6 +401,7 @@
 		};
 		5B717377217AC286009BEC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1F7010FB42712D6C501F35A /* Pods-NFL-Survivor-League-Manager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -332,6 +420,7 @@
 		};
 		5B717378217AC286009BEC6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0133CBE5AE5C8944FABDB749 /* Pods-NFL-Survivor-League-Manager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
