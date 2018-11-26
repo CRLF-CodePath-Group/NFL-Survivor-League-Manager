@@ -20,7 +20,7 @@ The following **required** functionality is completed:
 - [ ] Users can invite others to join their league
 - [ ] Users can view details of leagues they are in, and select their picks for the week(but cannot see others picks)
 - [ ] Managers screen can make their pick, and see stats on which teams were picked and who still needs to pick
-- [ ] Set up NFL API to automatically get NFL schedule and W/L for each week.
+- [X] Set up NFL API to automatically get NFL schedule and W/L for each week.
 
 The following **stretch** features are implemented:
 - [ ] Retractable side bar menu with all options and settings available
