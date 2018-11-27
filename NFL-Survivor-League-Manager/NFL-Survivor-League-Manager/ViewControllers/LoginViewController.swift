@@ -11,10 +11,11 @@ import Parse
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet var loginViewer: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         // Do any additional setup after loading the view.
     }
 
