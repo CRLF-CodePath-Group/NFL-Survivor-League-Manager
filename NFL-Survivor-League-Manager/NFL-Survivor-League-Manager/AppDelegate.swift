@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let parseConfig = ParseClientConfiguration( block: {(ParseMutableClientConfiguration) -> Void in
+            ParseMutableClientConfiguration.clientKey = "dGhpc21zY29kZXBhdGhuZmxzdXJaXZvcg=="
+            ParseMutableClientConfiguration.applicationId = "nflSurvivorManager"
+            ParseMutableClientConfiguration.server = "https://nfl-survivor-manager.herokuapp.com/parse"
+        })
+        Parse.initialize(with: parseConfig)
         return true
     }
 
