@@ -9,6 +9,10 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+    
+    override var shouldAutorotate: Bool{
+        return false    //disable auto-rotation for this view.
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
