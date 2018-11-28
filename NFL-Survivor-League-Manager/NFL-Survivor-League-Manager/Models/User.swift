@@ -9,14 +9,22 @@
 import Foundation
 import Parse
 
-class User : PFUser {
+class User : PFUser{
     static let weekParseUserTag = "week"
     static let weekCount = 17
     static let ownedLeagueTag = "ownedLeagueTag"
     static let memberLeagueTag = "memberLeagueTag"
+    var ownedLeagues = [League]()
+    var memberLeague = [League]()
     
+    override init() {
+            super.init()
+
+    }
     func initUserInfo() {
-        
+
+        self[User.ownedLeagueTag] = ownedLeagues
+        self[User.memberLeagueTag] = memberLeague
     }
 
 }

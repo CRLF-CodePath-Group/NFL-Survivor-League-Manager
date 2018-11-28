@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import Parse
 class SignUpViewController: UIViewController {
+    @IBOutlet weak var usernameTextField: UITextField!
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passworldTextField: UITextField!
     override var shouldAutorotate: Bool{
         return false    //disable auto-rotation for this view.
     }
@@ -19,21 +22,29 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func didTapRegister(_ sender: Any) {
+        if((self.usernameTextField.text?.isEmpty)! || (self.emailTextField.text?.isEmpty)! || (self.passworldTextField.text?.isEmpty)!) {
+            print("please fill out all the fields")
+        } else {
+            ParseAPIManager.signUpUser(self.usernameTextField.text!, password: self.passworldTextField.text!, self.emailTextField.text!) { (user, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let user = user {
+                    print("Success in creating user:")
+                    print(user.username!)
+                    self.performSegue(withIdentifier: "signUpSegue", sender: nil)
+                    
+                }
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

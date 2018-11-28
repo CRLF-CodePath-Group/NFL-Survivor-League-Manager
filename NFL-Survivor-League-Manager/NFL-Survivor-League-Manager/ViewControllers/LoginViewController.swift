@@ -10,6 +10,7 @@ import UIKit
 import Parse
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet var loginViewer: UIView!
     override func viewDidLoad() {
@@ -24,12 +25,17 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func tappedLogin(_ sender: Any) {
-        ParseAPIManager.logInUser("", "") { (user, error) in
-            if let user = user {
-                user.initUserInfo()
-            } else if let error = error {
-                print(error.localizedDescription)
+        if(!((self.usernameTextField.text?.isEmpty)!) && !((self.passwordTextField.text?.isEmpty)!)) {
+            ParseAPIManager.logInUser(self.usernameTextField.text!, self.passwordTextField.text!) { (user, error) in
+                if let user = user {
+                    print(user.objectId!)
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
             }
+        } else {
+            print("Please fill out fields")
         }
     }
 

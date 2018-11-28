@@ -1,15 +1,17 @@
 //
-//  MainHubViewController.swift
+//  SurvivorHubViewController.swift
 //  NFL-Survivor-League-Manager
 //
-//  Created by Jacob Frick on 11/25/18.
+//  Created by Jacob Frick on 11/28/18.
 //  Copyright © 2018 Jacob Frick. All rights reserved.
 //
 
 import UIKit
 
-class MainHubViewController: UIViewController {
+class SurvivorHubViewController: UIViewController {
 
+    @IBOutlet weak var memberTableView: UITableView!
+    @IBOutlet weak var ownedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,8 @@ class MainHubViewController: UIViewController {
     }
     
 
+    @IBAction func didTapLogOut(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
