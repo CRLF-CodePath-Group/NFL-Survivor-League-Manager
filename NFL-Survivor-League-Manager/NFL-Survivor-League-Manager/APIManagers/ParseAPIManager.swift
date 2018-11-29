@@ -36,4 +36,24 @@ class ParseAPIManager {
             
         }
     }
+    static func createNewLeague(_ owner: String, _ leagueName: String, completion: @escaping(League?, Error?) -> ()) {
+        let league = League()
+        
+        league.owner = owner
+        league.leagueName = leagueName
+        league.hasStarted = false
+        league.currentWeek = 1
+        league.aliveMembers = [String]()
+        league.deadMembers = [String]()
+        league.initLeague(leagueName, owner)
+        league.saveInBackground() {
+            (success, error) in
+            if success {
+                completion(league, nil)
+            } else if let error = error {
+                print(error.localizedDescription)
+                completion(nil, error)
+            }
+        }
+    }
 }

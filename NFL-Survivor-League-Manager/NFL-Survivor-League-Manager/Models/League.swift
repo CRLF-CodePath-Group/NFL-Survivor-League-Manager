@@ -10,33 +10,43 @@ import Foundation
 import Parse
 class League : PFObject{
     static let ownerTag = "ownerTag"
+    static let leagueNameTag = "leagueNameTag"
     static let currentWeekTag = "currentWeekTag"
     static let aliveMembersTag = "aliveMembersTag"
     static let deadMembersTag = "deadMembersTag"
     static let hasStartedTag = "hasStartedTage"
     static let picksTag = "picksTag"
     
-    var owner = String()
-    var currentWeek = Int()
-    var aliveMembers = [String]()
-    var deadMembers = [String]()
-    var hasStarted = Bool()
-    var picks = [[Pick]]()
+    @NSManaged var owner : String
+    @NSManaged var leagueName : String
+    @NSManaged var currentWeek : Int
+    @NSManaged var aliveMembers : [String]
+    @NSManaged var deadMembers : [String]
+    @NSManaged var hasStarted : Bool
+    @NSManaged var picks : [[Pick]]
     
     override init() {
         super.init()
     }
     
-    func initLeague() {
+    func initLeague(_ leagueName: String, _ ownerName: String) {
         for _ in 1...17 {
             let pick = [Pick]()
             picks.append(pick)
         }
-        self[League.ownerTag] = owner
+        self[League.ownerTag] = ownerName
+        self[League.leagueNameTag] = leagueName
         self[League.currentWeekTag] = currentWeek
         self[League.aliveMembersTag] = aliveMembers
         self[League.deadMembersTag] = deadMembers
         self[League.hasStartedTag] = hasStarted
         self[League.picksTag] = picks
     }
+}
+extension League : PFSubclassing {
+    static func parseClassName() -> String {
+        return "League"
+    }
+    
+    
 }

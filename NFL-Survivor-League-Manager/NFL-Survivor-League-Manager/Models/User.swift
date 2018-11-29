@@ -10,21 +10,31 @@ import Foundation
 import Parse
 
 class User : PFUser{
+
     static let weekParseUserTag = "week"
     static let weekCount = 17
     static let ownedLeagueTag = "ownedLeagueTag"
     static let memberLeagueTag = "memberLeagueTag"
-    var ownedLeagues = [League]()
-    var memberLeague = [League]()
-    
+    static let inviteTag = "inviteTag"
+    @NSManaged var ownedLeagues : [String]
+    @NSManaged var memberLeague : [String]
+    @NSManaged var invites : [String]
+  
     override init() {
-            super.init()
-
+        super.init()
     }
     func initUserInfo() {
 
         self[User.ownedLeagueTag] = ownedLeagues
         self[User.memberLeagueTag] = memberLeague
+        self[User.inviteTag] = invites
     }
-
+    func addOwnedLeague(_ leagueId: String) {
+        ownedLeagues.append(leagueId)
+    }
+    func saveUserInfo() {
+        self[User.ownedLeagueTag] = ownedLeagues
+        self[User.memberLeagueTag] = memberLeague
+        self[User.inviteTag] = invites
+    }
 }

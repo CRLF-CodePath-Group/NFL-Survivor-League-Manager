@@ -8,12 +8,17 @@
 
 import Foundation
 
-class Pick {
+class Pick: PFObject, PFSubclassing {
+    static func parseClassName() -> String {
+        return "Pick"
+    }
+    
     var username = String()
     var teamPicked = Team.self
     
     init(_ username: String, _ teamPicked: Team.Type) {
         self.username = username
         self.teamPicked = teamPicked
+        super.init()
     }
 }
