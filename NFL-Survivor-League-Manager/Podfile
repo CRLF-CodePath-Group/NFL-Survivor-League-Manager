@@ -7,4 +7,5 @@ target 'NFL-Survivor-League-Manager' do
 
   # Pods for NFL-Survivor-League-Manager
 	pod 'Parse'
+	pod 'IQKeyboardManagerSwift'
 end
