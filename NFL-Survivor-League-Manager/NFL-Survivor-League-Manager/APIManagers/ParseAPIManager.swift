@@ -56,4 +56,15 @@ class ParseAPIManager {
             }
         }
     }
+    static func getLeagueById(_ ids: [String], completion: @escaping([League]?, Error?) -> ()) {
+        let query = PFQuery(className: "League")
+        query.whereKey("objectId", containedIn: ids)
+        query.findObjectsInBackground { (leagues, error) in
+            if let leagues = leagues {
+                completion(leagues as! [League], nil)
+            } else if let error = error {
+                completion(nil, error)
+            }
+        }
+    }
 }

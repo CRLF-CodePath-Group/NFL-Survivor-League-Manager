@@ -21,6 +21,9 @@ class NewLeagueViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func didTapCancel(_ sender: Any) {
+        performSegue(withIdentifier: "toSurvivorHub", sender: nil)
+    }
     
     @IBAction func didTapCreate(_ sender: Any) {
         if !((self.newLeagueNameTextField.text?.isEmpty)!) {
@@ -41,16 +44,12 @@ class NewLeagueViewController: UIViewController {
             }
     
         }
+        performSegue(withIdentifier: "toSurvivorHub", sender: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toSurvivorHub" {
+            usleep(500000)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
+        }
     }
-    */
-
 }

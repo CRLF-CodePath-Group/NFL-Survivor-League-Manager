@@ -23,17 +23,13 @@ class League : PFObject{
     @NSManaged var aliveMembers : [String]
     @NSManaged var deadMembers : [String]
     @NSManaged var hasStarted : Bool
-    @NSManaged var picks : [[Pick]]
+    @NSManaged var picks : [String : [String]]
     
     override init() {
         super.init()
     }
     
     func initLeague(_ leagueName: String, _ ownerName: String) {
-        for _ in 1...17 {
-            let pick = [Pick]()
-            picks.append(pick)
-        }
         self[League.ownerTag] = ownerName
         self[League.leagueNameTag] = leagueName
         self[League.currentWeekTag] = currentWeek

@@ -129,21 +129,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-nF-eZX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-nF-eZX">
                                 <rect key="frame" x="0.0" y="106" width="375" height="260"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="luq-Yi-3lv"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3Nc-r3-mqn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownedTableCell" id="3Nc-r3-mqn" customClass="OwnedLeagueCell" customModule="NFL_Survivor_League_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Nc-r3-mqn" id="OhP-UC-Yp1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="League Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un1-Mg-XaV">
+                                                    <rect key="frame" x="15" y="11" width="106" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="leagueNameLabel" destination="un1-Mg-XaV" id="A9J-wn-rY2"/>
+                                            <segue destination="BAc-h6-9Ox" kind="show" identifier="toOwnedLeagueView" id="CUw-5c-WUU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -175,16 +190,14 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzw-8S-Um0">
                                 <rect key="frame" x="286" y="64" width="89" height="42"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="cy3-hK-00j"/>
                                     <constraint firstAttribute="height" constant="42" id="ibX-tI-JDE"/>
                                 </constraints>
-                                <state key="normal" title="New League">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="New League"/>
                                 <connections>
-                                    <segue destination="XpZ-GG-tN2" kind="show" id="ze0-6W-exB"/>
+                                    <action selector="didTapNewLeague:" destination="0Vs-vV-tql" eventType="touchUpInside" id="YuM-DW-sNM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -216,20 +229,31 @@
                                 <action selector="didTapLogOut:" destination="0Vs-vV-tql" id="F58-IB-dBw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Messages" id="ioq-Zh-ljb">
-                            <connections>
-                                <segue destination="Pbr-8H-Z8E" kind="show" id="pHo-hI-Z7o"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="memberTableView" destination="f0m-m3-eun" id="7Zo-B2-suY"/>
                         <outlet property="ownedTableView" destination="HTx-nF-eZX" id="PJq-04-T5T"/>
+                        <segue destination="BgQ-E8-Pec" kind="showDetail" identifier="toNewLeagueController" id="MPJ-Ls-Nwi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-AB-5fV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2008.8" y="131.78410794602701"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gnb-g4-idh">
+            <objects>
+                <viewController id="BAc-h6-9Ox" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="poB-aw-WsB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OA8-ts-crB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J5E-x3-DsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3167" y="133"/>
         </scene>
         <!--New League View Controller-->
         <scene sceneID="vDt-lt-B8X">
@@ -272,14 +296,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xcv-47-Y8M"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QVJ-hw-uAw"/>
+                    <navigationItem key="navigationItem" id="QVJ-hw-uAw">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="38M-qx-pfq">
+                            <connections>
+                                <action selector="didTapCancel:" destination="XpZ-GG-tN2" id="wqs-hK-i66"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="newLeagueNameTextField" destination="ZT2-1M-qWs" id="fns-5O-TcE"/>
+                        <segue destination="857-63-MrN" kind="showDetail" identifier="toSurvivorHub" id="zPT-4I-Bia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57N-5B-qHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3045.5999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="3066" y="-608"/>
         </scene>
         <!--Invites View Controller-->
         <scene sceneID="bwX-Ky-Gyy">
@@ -311,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwD-uC-ypy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008.8" y="-646.32683658170924"/>
+            <point key="canvasLocation" x="1070" y="-607"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="POC-he-Oo2">
@@ -464,11 +495,29 @@
             </objects>
             <point key="canvasLocation" x="1069.5999999999999" y="131.78410794602701"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1MN-mZ-xnG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BgQ-E8-Pec" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Itl-gI-xK8">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XpZ-GG-tN2" kind="relationship" relationship="rootViewController" id="iSG-co-uPU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MMo-aj-QBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="-607.64617691154433"/>
+        </scene>
     </scenes>
     <resources>
         <image name="nflSurvivorIcon.whiteOutline" width="2273" height="3071"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ymM-NJ-isp"/>
+        <segue reference="zPT-4I-Bia"/>
     </inferredMetricsTieBreakers>
 </document>

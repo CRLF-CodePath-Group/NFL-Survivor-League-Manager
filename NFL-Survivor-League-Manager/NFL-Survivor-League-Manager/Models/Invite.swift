@@ -13,5 +13,10 @@ class Invite: PFObject, PFSubclassing {
         return "Invite"
     }
     
+    @NSManaged var fromOwner : String
+    @NSManaged var leagueId : String
+    @NSManaged var leagueName : String
+    
+    
     
 }

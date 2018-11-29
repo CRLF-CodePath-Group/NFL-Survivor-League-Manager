@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureParse()
         return true
     }
+    func reloadDate() {
+        
+    }
     func configureParse() {
         League.registerSubclass()
         User.registerSubclass()

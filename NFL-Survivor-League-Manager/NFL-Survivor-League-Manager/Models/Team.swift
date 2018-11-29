@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 enum Team: String{
     //NFC SOUTH
     case ATLANTA = "Falcons"; case PANTHERS = "Panthers"; case SAINTS = "Saints"; case BUCCANEERS = "Buccaneers"
