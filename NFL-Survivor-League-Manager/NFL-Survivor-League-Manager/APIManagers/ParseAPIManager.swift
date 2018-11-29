@@ -61,10 +61,22 @@ class ParseAPIManager {
         query.whereKey("objectId", containedIn: ids)
         query.findObjectsInBackground { (leagues, error) in
             if let leagues = leagues {
-                completion(leagues as! [League], nil)
+                completion(leagues as? [League], nil)
             } else if let error = error {
                 completion(nil, error)
             }
         }
+    }
+    static func findUserByUsername(_ username: String, completion: @escaping(User?, Error?, Bool?) -> ()) {
+        let query = PFUser.query()
+        query?.whereKey("username", contains: username)
+    
+        query?.findObjectsInBackground(block: { (users, error) in
+            if (users?.count)! > 0 {
+                completion(users![0] as? User, nil, true)
+            } else if let error = error {
+                completion(nil, error, false)
+            }
+        })
     }
 }

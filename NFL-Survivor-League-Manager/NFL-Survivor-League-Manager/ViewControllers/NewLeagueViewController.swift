@@ -11,6 +11,10 @@ import Parse
 class NewLeagueViewController: UIViewController {
     @IBOutlet weak var newLeagueNameTextField: UITextField!
     
+    @IBOutlet weak var userFoundLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var userInviteTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,8 @@ class NewLeagueViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBOutlet weak var didTapInviteUser: UIButton!
+    
     @IBAction func didTapCancel(_ sender: Any) {
         performSegue(withIdentifier: "toSurvivorHub", sender: nil)
     }
@@ -48,7 +54,7 @@ class NewLeagueViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSurvivorHub" {
-            usleep(500000)
+            usleep(200000)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
         }
     }
