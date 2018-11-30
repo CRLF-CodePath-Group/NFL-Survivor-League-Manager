@@ -298,6 +298,9 @@
                                     <constraint firstAttribute="width" constant="74" id="j4a-wn-CNJ"/>
                                 </constraints>
                                 <state key="normal" title="Invite User"/>
+                                <connections>
+                                    <action selector="didTapInvite:" destination="XpZ-GG-tN2" eventType="touchUpInside" id="dUx-mc-Exg"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Invite List:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4I-GQ-MyX">
                                 <rect key="frame" x="16" y="187" width="118" height="21"/>
@@ -309,13 +312,30 @@
                                 <rect key="frame" x="16" y="216" width="343" height="393"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8Fb-0r-yvd">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="37" id="8Fb-0r-yvd" customClass="NewUserInviteCell" customModule="NFL_Survivor_League_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Fb-0r-yvd" id="IuF-le-T8h">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="36.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-jb-eRz">
+                                                    <rect key="frame" x="15" y="7" width="313" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vnK-jb-eRz" firstAttribute="top" secondItem="IuF-le-T8h" secondAttribute="top" constant="7" id="9VA-eZ-8tz"/>
+                                                <constraint firstAttribute="bottom" secondItem="vnK-jb-eRz" secondAttribute="bottom" constant="7.5" id="C8t-PJ-5wA"/>
+                                                <constraint firstAttribute="trailing" secondItem="vnK-jb-eRz" secondAttribute="trailing" constant="15" id="Ll2-TP-x5E"/>
+                                                <constraint firstItem="vnK-jb-eRz" firstAttribute="leading" secondItem="IuF-le-T8h" secondAttribute="leading" constant="15" id="mm7-Ra-SLO"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="usernameInviteLabel" destination="vnK-jb-eRz" id="3mp-EG-RtB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -362,7 +382,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="didTapInviteUser" destination="FNa-fk-ala" id="6hc-gK-bUb"/>
                         <outlet property="newLeagueNameTextField" destination="ZT2-1M-qWs" id="fns-5O-TcE"/>
                         <outlet property="tableView" destination="L6M-kF-UGE" id="Flw-2U-QB9"/>
                         <outlet property="userFoundLabel" destination="9Ca-bc-BqE" id="LRY-90-hSr"/>

@@ -8,12 +8,13 @@
 
 import UIKit
 import Parse
-class NewLeagueViewController: UIViewController {
+class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var newLeagueNameTextField: UITextField!
     
     @IBOutlet weak var userFoundLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userInviteTextField: UITextField!
+    var toBeInvitedUsers = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,13 @@ class NewLeagueViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func didTapInvite(_ sender: Any) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBOutlet weak var didTapInviteUser: UIButton!
+  
     
     @IBAction func didTapCancel(_ sender: Any) {
         performSegue(withIdentifier: "toSurvivorHub", sender: nil)
@@ -51,6 +54,17 @@ class NewLeagueViewController: UIViewController {
     
         }
         performSegue(withIdentifier: "toSurvivorHub", sender: nil)
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.toBeInvitedUsers.count == 0 {
+            return 1
+        } else {
+            return self.toBeInvitedUsers.count
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSurvivorHub" {
