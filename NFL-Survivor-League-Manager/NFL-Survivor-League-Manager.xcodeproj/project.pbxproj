@@ -50,7 +50,6 @@
 		5B717373217AC286009BEC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B90BF8321A8FE1B0085DF73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLAPIManager.swift; sourceTree = "<group>"; };
-		5BA324F421AF6F06006DE10E /* NFL-Survivor-League-Manager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NFL-Survivor-League-Manager-Bridging-Header.h"; sourceTree = "<group>"; };
 		5BA99C2021AF608600C8DEC5 /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLeagueViewController.swift; sourceTree = "<group>"; };
 		5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +99,6 @@
 				5B71736E217AC286009BEC6D /* Assets.xcassets */,
 				5B717370217AC286009BEC6D /* LaunchScreen.storyboard */,
 				5B717373217AC286009BEC6D /* Info.plist */,
-				5BA324F421AF6F06006DE10E /* NFL-Survivor-League-Manager-Bridging-Header.h */,
 			);
 			path = "NFL-Survivor-League-Manager";
 			sourceTree = "<group>";
@@ -373,7 +371,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jacobfrick/Desktop/CodePathProjects/NFL-Survior-League-Manager/NFL-Survivor-League-Manager/NFL-Survivor-League-Manager/NFL-Survivor-League-Manager-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -427,7 +425,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jacobfrick/Desktop/CodePathProjects/NFL-Survior-League-Manager/NFL-Survivor-League-Manager/NFL-Survivor-League-Manager/NFL-Survivor-League-Manager-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

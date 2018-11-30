@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class Invite: PFObject, PFSubclassing {
     static func parseClassName() -> String {

@@ -15,14 +15,31 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userInviteTextField: UITextField!
     var toBeInvitedUsers = [String]()
+    var foundUsers = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        userFoundLabel.text = ""
         // Do any additional setup after loading the view.
     }
 
     @IBAction func didTapInvite(_ sender: Any) {
+        if !(self.userInviteTextField.text?.isEmpty)! {
+            
+            ParseAPIManager.findUserByUsername(self.userInviteTextField.text!) { (user, success) in
+                if success! {
+                    
+                    self.userFoundLabel.text = "User found"
+                    self.foundUsers.append(user!)
+                    self.tableView.reloadData()
+                    self.userInviteTextField.text = ""
+                } else {
+                    self.userFoundLabel.text = "User not found"
+                }
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,8 +61,6 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
                     (PFUser.current() as! User).saveInBackground()
                     print((PFUser.current() as! User).ownedLeagues.count)
                     print("Created")
-                
-                    
                 } else if let error = error {
                     print(error.localizedDescription)
                 }
@@ -56,15 +71,20 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
         performSegue(withIdentifier: "toSurvivorHub", sender: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.toBeInvitedUsers.count == 0 {
+        if self.foundUsers.count == 0 {
             return 1
         } else {
-            return self.toBeInvitedUsers.count
+            return self.foundUsers.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newUserInviteCell", for: indexPath) as! NewUserInviteCell
+        if self.foundUsers.count == 0 {
+            cell.usernameInviteLabel.text = "No users added :("
+        } else {
+            cell.usernameInviteLabel.text = self.foundUsers[indexPath.row].username
+        }
+        return cell
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSurvivorHub" {

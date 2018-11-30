@@ -54,6 +54,7 @@ class ParseAPIManager {
                 print(error.localizedDescription)
                 completion(nil, error)
             }
+            
         }
     }
     static func getLeagueById(_ ids: [String], completion: @escaping([League]?, Error?) -> ()) {
@@ -67,15 +68,17 @@ class ParseAPIManager {
             }
         }
     }
-    static func findUserByUsername(_ username: String, completion: @escaping(User?, Error?, Bool?) -> ()) {
+    static func findUserByUsername(_ username: String, completion: @escaping(User?, Bool?) -> ()) {
         let query = PFUser.query()
         query?.whereKey("username", contains: username)
-    
+        
         query?.findObjectsInBackground(block: { (users, error) in
-            if (users?.count)! > 0 {
-                completion(users![0] as? User, nil, true)
-            } else if let error = error {
-                completion(nil, error, false)
+            if users != nil && (users?.count)! > 0{
+                
+                completion(users![0] as? User, true)
+            } else{
+                //print(error.localizedDescription)
+                completion(nil, false)
             }
         })
     }
