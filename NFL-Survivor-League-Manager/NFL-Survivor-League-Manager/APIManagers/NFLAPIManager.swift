@@ -10,12 +10,12 @@ import Foundation
 
 class NFLAPIManager {
     static let baseURL = "https://api.mysportsfeeds.com/v2.0/pull/nfl/2018-regular/games.json"
-    static let apiKey = ""
+    static let apiKey = "8a845244-da8a-4b3b-a765-a49bc0"
     static let password = "MYSPORTSFEEDS"
     
     
 
-    func grabFullNFLSeason(completion: @escaping(Schedule?, Error?) -> ()) {
+    static func grabFullNFLSeason(completion: @escaping(Schedule?, Error?) -> ()) {
         let passwordString = "\(NFLAPIManager.apiKey):\(NFLAPIManager.password)"
         let passwordData = passwordString.data(using: String.Encoding.ascii)
         let base64Pass = passwordData?.base64EncodedString()
