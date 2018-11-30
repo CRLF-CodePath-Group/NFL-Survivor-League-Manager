@@ -11,15 +11,15 @@ import Foundation
 
 
 class Schedule {
-    static var games = [[Game]]()
+    var games = [[Game]]()
     init(_ gameDictionaryArray: [[String: Any]]) {
         for _ in 0...16 {
             let test = [Game]()
-            Schedule.games.append(test)
+            games.append(test)
         }
         for gameDictionary in gameDictionaryArray {
            let game = Game(gameDictionary)
-           Schedule.games[game.week-1].append(game)
+           games[game.week-1].append(game)
         }
     }
 }

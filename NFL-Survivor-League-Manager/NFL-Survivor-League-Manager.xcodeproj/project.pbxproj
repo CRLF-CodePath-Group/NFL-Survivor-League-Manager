@@ -28,6 +28,9 @@
 		5BA99C2321AF65CF00C8DEC5 /* NewLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */; };
 		5BA99C2521AF661B00C8DEC5 /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */; };
 		5BF14A9721AFBB0F0052F3FC /* OwnedLeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */; };
+		9B8D988C21B0BAD1000617A1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D988B21B0BAD1000617A1 /* CollectionViewController.swift */; };
+		9B8D988E21B0BC3B000617A1 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D988D21B0BC3B000617A1 /* GameCell.swift */; };
+		9B8D989021B0BD34000617A1 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D988F21B0BD34000617A1 /* GamesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLeagueViewController.swift; sourceTree = "<group>"; };
 		5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
 		5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedLeagueCell.swift; sourceTree = "<group>"; };
+		9B8D988B21B0BAD1000617A1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		9B8D988D21B0BC3B000617A1 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		9B8D988F21B0BD34000617A1 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NFL_Survivor_League_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F7010FB42712D6C501F35A /* Pods-NFL-Survivor-League-Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFL-Survivor-League-Manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +133,9 @@
 				5B655C1B21AF29D400065B94 /* SurvivorHubViewController.swift */,
 				5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */,
 				5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */,
+				9B8D988B21B0BAD1000617A1 /* CollectionViewController.swift */,
+				9B8D988D21B0BC3B000617A1 /* GameCell.swift */,
+				9B8D988F21B0BD34000617A1 /* GamesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -273,9 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8D988C21B0BAD1000617A1 /* CollectionViewController.swift in Sources */,
 				5BF14A9721AFBB0F0052F3FC /* OwnedLeagueCell.swift in Sources */,
 				5B655C1A21AF23AE00065B94 /* Pick.swift in Sources */,
 				5B655C0E21ABC5D200065B94 /* LoginViewController.swift in Sources */,
+				9B8D989021B0BD34000617A1 /* GamesViewController.swift in Sources */,
 				5B655C1021ABC5DF00065B94 /* SignUpViewController.swift in Sources */,
 				5B655C0C21A92CC400065B94 /* Team.swift in Sources */,
 				5BA99C2321AF65CF00C8DEC5 /* NewLeagueViewController.swift in Sources */,
@@ -288,6 +299,7 @@
 				5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */,
 				5B655C0A21A921A900065B94 /* Schedule.swift in Sources */,
 				5B655C1821AF150A00065B94 /* League.swift in Sources */,
+				9B8D988E21B0BC3B000617A1 /* GameCell.swift in Sources */,
 				5BA99C2521AF661B00C8DEC5 /* InvitesViewController.swift in Sources */,
 				5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */,
 			);
@@ -445,6 +457,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "CodePath.NFL-Survivor-League-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,6 +477,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "CodePath.NFL-Survivor-League-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
