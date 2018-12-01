@@ -13,13 +13,15 @@ class GamesViewController: UIViewController, UICollectionViewDataSource
     var games: [[String: Any]] = []
     var schedule : Schedule!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var awayTeamLogoImageView: UIImageView!
+    @IBOutlet weak var homeTeamLogoImageView: UIImageView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
-    
+
         NFLAPIManager.grabFullNFLSeason { (schedule, error) in
             if let schedule = schedule {
                 self.schedule = schedule
@@ -44,8 +46,13 @@ class GamesViewController: UIViewController, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         //let game = games[indexPath.item]
         cell.awayTeamLabel.text = schedule.games[0][indexPath.item].awayTeam.rawValue
-        cell.homeTeamLabel.text = schedule.games[0][indexPath.row].homeTeam.rawValue
-        
+        cell.homeTeamLabel.text = schedule.games[0][indexPath.item].homeTeam.rawValue
+        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].awayTeam.rawValue)")
+        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].homeTeam.rawValue)")
+        cell.awayTeamLogoImageView.image = awayImage
+        cell.homeTeamLogoImageView.image = homeImage
+        cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+        cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
         return cell
     }
     

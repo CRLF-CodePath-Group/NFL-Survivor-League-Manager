@@ -97,6 +97,7 @@
 		5B717366217AC283009BEC6D /* NFL-Survivor-League-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				9B4685C021B20F22001121BA /* Cells */,
 				5B90BF8721A8FE520085DF73 /* APIManagers */,
 				5B71737A217AC2A7009BEC6D /* ViewControllers */,
 				5B717379217AC28E009BEC6D /* Models */,
@@ -115,6 +116,7 @@
 				5B90BF8321A8FE1B0085DF73 /* Game.swift */,
 				5B655C0921A921A900065B94 /* Schedule.swift */,
 				5B655C0B21A92CC400065B94 /* Team.swift */,
+				9B8D988D21B0BC3B000617A1 /* GameCell.swift */,
 				5B655C1321ABC73E00065B94 /* User.swift */,
 				5B655C1721AF150A00065B94 /* League.swift */,
 				5B655C1921AF23AE00065B94 /* Pick.swift */,
@@ -134,7 +136,6 @@
 				5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */,
 				5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */,
 				9B8D988B21B0BAD1000617A1 /* CollectionViewController.swift */,
-				9B8D988D21B0BC3B000617A1 /* GameCell.swift */,
 				9B8D988F21B0BD34000617A1 /* GamesViewController.swift */,
 			);
 			path = ViewControllers;
@@ -147,6 +148,13 @@
 				5B655C1521ABC75E00065B94 /* ParseAPIManager.swift */,
 			);
 			path = APIManagers;
+			sourceTree = "<group>";
+		};
+		9B4685C021B20F22001121BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C2456B287D5F1B2D42C28B75 /* Pods */ = {

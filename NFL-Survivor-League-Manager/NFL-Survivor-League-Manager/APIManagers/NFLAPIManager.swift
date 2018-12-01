@@ -15,7 +15,7 @@ class NFLAPIManager {
     
     
 
-    func grabFullNFLSeason(completion: @escaping(Schedule?, Error?) -> ()) {
+    static func grabFullNFLSeason(completion: @escaping(Schedule?, Error?) -> ()) {
         let passwordString = "\(NFLAPIManager.apiKey):\(NFLAPIManager.password)"
         let passwordData = passwordString.data(using: String.Encoding.ascii)
         let base64Pass = passwordData?.base64EncodedString()
