@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36BDDA4321B2234200E7B041 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDDA4221B2234200E7B041 /* InviteCell.swift */; };
 		469F166B70B98160F7100AAF /* Pods_NFL_Survivor_League_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */; };
 		5B2165BE21B0AC2600F6F4B6 /* NewUserInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */; };
 		5B655C0A21A921A900065B94 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0921A921A900065B94 /* Schedule.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		0133CBE5AE5C8944FABDB749 /* Pods-NFL-Survivor-League-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFL-Survivor-League-Manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager.release.xcconfig"; sourceTree = "<group>"; };
+		36BDDA4221B2234200E7B041 /* InviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCell.swift; sourceTree = "<group>"; };
 		5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserInviteCell.swift; sourceTree = "<group>"; };
 		5B655C0921A921A900065B94 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5B655C0B21A92CC400065B94 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				5BA99C2021AF608600C8DEC5 /* Invite.swift */,
 				5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */,
 				5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */,
+				36BDDA4221B2234200E7B041 /* InviteCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */,
 				5B655C1421ABC73E00065B94 /* User.swift in Sources */,
 				5B655C1621ABC75E00065B94 /* ParseAPIManager.swift in Sources */,
+				36BDDA4321B2234200E7B041 /* InviteCell.swift in Sources */,
 				5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */,
 				5B655C0A21A921A900065B94 /* Schedule.swift in Sources */,
 				5B655C1821AF150A00065B94 /* League.swift in Sources */,

@@ -8,11 +8,15 @@
 
 import UIKit
 
-class InvitesViewController: UIViewController {
+class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var inviteList = [Invite]()
+    @IBOutlet weak var listViewer: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        listViewer.delegate = self
+        listViewer.dataSource = self
+        listViewer.rowHeight = 120
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +25,16 @@ class InvitesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 10
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = listViewer.dequeueReusableCell(withIdentifier: "InviteCell", for: indexPath) as! InviteCell
+        //cell.listVariable = inviteList[indexPath.row]
+        return cell
+    }
+   
     /*
     // MARK: - Navigation
 
