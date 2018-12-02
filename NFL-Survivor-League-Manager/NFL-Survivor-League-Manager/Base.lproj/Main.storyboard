@@ -747,7 +747,6 @@
         <image name="nflSurvivorIcon.whiteOutline" width="2273" height="3071"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zPT-4I-Bia"/>
         <segue reference="132-a6-H5C"/>
         <segue reference="W9a-99-f2A"/>
     </inferredMetricsTieBreakers>

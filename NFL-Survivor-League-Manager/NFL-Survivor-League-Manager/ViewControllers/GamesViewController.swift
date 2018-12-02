@@ -11,7 +11,8 @@ import UIKit
 class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate
 {
     var schedule : Schedule!
-    var buttonState = Array(repeating: false, count: 32)
+    var buttonState = Array(repeating: #imageLiteral(resourceName: "Radio Button.png"), count: 32)
+    var cell_num = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var awayTeamLogoImageView: UIImageView!
@@ -51,104 +52,41 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         cell.homeTeamLabel.text = schedule.games[0][indexPath.item].homeTeam.rawValue
         let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].awayTeam.rawValue)")
         let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].homeTeam.rawValue)")
+        cell.cellNumber = cell_num
+        cell_num = cell_num + 1
         cell.awayTeamLogoImageView.image = awayImage
         cell.homeTeamLogoImageView.image = homeImage
         cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
         cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+        print(cell.cellNumber)
         return cell
     }
     
-    func updateRadios()
+    func updateRadios(_ cell: GameCell, _ homeRadioButton: UIImage?, _ awayRadioButton: UIImage?)
     {
-        var n = 0
-        let cell = GameCell()
-        cell.delegate = self
+        let homePositions = (2*cell.cellNumber)+1
+        let awayPositions = 2*cell.cellNumber
         
-        //sets all elements to false
-        for index in 0 ..< buttonState.count
+        //traverse through the array of UIImages
+        for index in buttonState
         {
-            buttonState[index] = false
-        }
-        
-        //Looks for any filled button and updates buttonState[] to true
-        for cell in self.collectionView.visibleCells as! [GameCell]
-        {
-            let homePositions = (2*n)+1
-            let awayPositions = 2*n
-            
-            if cell.awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button Fill.png")
+            if homeRadioButton != index
             {
-                buttonState[awayPositions] = true
+                if index == #imageLiteral(resourceName: "Radio Button Fill.png")
+                {
+                    //homeRadioButton = #imageLiteral(resourceName: "Radio Button.png")
+                    cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                }
             }
-            else if cell.homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button Fill.png")
+            else if awayRadioButton != index
             {
-                buttonState[homePositions] = true
+                if index == #imageLiteral(resourceName: "Radio Button Fill.png")
+                {
+                    //awayRadioButton = #imageLiteral(resourceName: "Radio Button.png")
+                    cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                }
             }
-            
-            n = n + 1
         }
-        
-        n = 0
-        
-        //This is what im trying to work on to limit picks to one team
-        for cell in self.collectionView.visibleCells as! [GameCell]
-        {
-            let homePositions = (2*n)+1
-            let awayPositions = 2*n
-            
-            if buttonState[awayPositions] == true
-            {
-                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            }
-            else if buttonState[homePositions] == true
-            {
-                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            }
-            else
-            {
-                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-            }
-            
-            n = n + 1
-        }
-        
-    }
-    
-    func didTapHomeButton(cell: GameCell)
-    {
-        let item = collectionView.indexPath(for: cell)?.item
-        
-        if cell.homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png")
-        {
-            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        else
-        {
-            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        
-        updateRadios()
-        print(buttonState)
-    }
-    
-    func didTapAwayButton(cell: GameCell)
-    {
-        let item = collectionView.indexPath(for: cell)?.item
-        
-        if cell.awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png")
-        {
-            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        else
-        {
-            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        
-        updateRadios()
-        print(buttonState)
     }
     
     override func didReceiveMemoryWarning()
