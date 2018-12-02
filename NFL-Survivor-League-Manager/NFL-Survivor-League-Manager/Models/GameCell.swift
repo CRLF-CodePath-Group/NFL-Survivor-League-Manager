@@ -10,9 +10,7 @@ import UIKit
 
 protocol  GameCellDelegate : class
 {
-    func updateRadios()
-    func didTapHomeButton(cell:GameCell)
-    func didTapAwayButton(cell:GameCell)
+    func updateRadios(_ cell: GameCell, _ homeRadioButton: UIImage?, _ awayRadioButton: UIImage?)
 }
 
 class GameCell: UICollectionViewCell
@@ -25,11 +23,10 @@ class GameCell: UICollectionViewCell
     @IBOutlet weak var homeTeamRadioButon: UIButton!
     
     weak var delegate : GameCellDelegate?
+    var cellNumber = 0
     
     @IBAction func didTapAwayRadioButton(_ sender: UIButton)
     {
-        delegate?.didTapAwayButton(cell: self)
-        /*
         if awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png")
         {
             awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
@@ -39,13 +36,10 @@ class GameCell: UICollectionViewCell
         {
             awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
         }
-        */
     }
     
     @IBAction func didTapHomeRadioButton(_ sender: UIButton)
     {
-        delegate?.didTapHomeButton(cell: self)
-        /*
         if homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png")
         {
             homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
@@ -55,7 +49,6 @@ class GameCell: UICollectionViewCell
         {
             homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
         }
-        */
     }
     
 }
