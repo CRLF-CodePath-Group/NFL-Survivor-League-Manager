@@ -99,7 +99,6 @@
 		5B717366217AC283009BEC6D /* NFL-Survivor-League-Manager */ = {
 			isa = PBXGroup;
 			children = (
-				9B4685C021B20F22001121BA /* Cells */,
 				5B90BF8721A8FE520085DF73 /* APIManagers */,
 				5B71737A217AC2A7009BEC6D /* ViewControllers */,
 				5B717379217AC28E009BEC6D /* Models */,
@@ -151,13 +150,6 @@
 				5B655C1521ABC75E00065B94 /* ParseAPIManager.swift */,
 			);
 			path = APIManagers;
-			sourceTree = "<group>";
-		};
-		9B4685C021B20F22001121BA /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		C2456B287D5F1B2D42C28B75 /* Pods */ = {
