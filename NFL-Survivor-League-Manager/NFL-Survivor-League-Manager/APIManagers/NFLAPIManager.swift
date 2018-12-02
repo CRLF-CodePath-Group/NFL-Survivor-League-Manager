@@ -10,7 +10,7 @@ import Foundation
 
 class NFLAPIManager {
     static let baseURL = "https://api.mysportsfeeds.com/v2.0/pull/nfl/2018-regular/games.json"
-    static let apiKey = ""
+    static let apiKey = "5b674b93-58b5-4ed8-80f8-1548e9"
     static let password = "MYSPORTSFEEDS"
     
     

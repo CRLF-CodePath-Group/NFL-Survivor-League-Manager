@@ -8,13 +8,11 @@
 
 import UIKit
 
-protocol  GameCellDelegate : class
-{
-    func updateRadios(_ cell: GameCell, _ homeRadioButton: UIImage?, _ awayRadioButton: UIImage?)
+protocol  GameCellDelegate : class {
+    func updateRadios(_ num: Int, _ isHomeTeam: Bool)
 }
 
-class GameCell: UICollectionViewCell
-{
+class GameCell: UICollectionViewCell {
     @IBOutlet weak var awayTeamLabel: UILabel!
     @IBOutlet weak var homeTeamLabel: UILabel!
     @IBOutlet weak var awayTeamLogoImageView: UIImageView!
@@ -23,32 +21,22 @@ class GameCell: UICollectionViewCell
     @IBOutlet weak var homeTeamRadioButon: UIButton!
     
     weak var delegate : GameCellDelegate?
-    var cellNumber = 0
+    var cellNumber : Int?
+    var indexPath : IndexPath?
     
-    @IBAction func didTapAwayRadioButton(_ sender: UIButton)
-    {
-        if awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png")
-        {
+    @IBAction func didTapAwayRadioButton(_ sender: UIButton) {
+        if awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        else
-        {
-            awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            let cellIdNum = 2 * self.cellNumber!
+            self.delegate?.updateRadios(cellIdNum, false)
         }
     }
     
-    @IBAction func didTapHomeRadioButton(_ sender: UIButton)
-    {
-        if homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png")
-        {
+    @IBAction func didTapHomeRadioButton(_ sender: UIButton) {
+        if homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-            awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        }
-        else
-        {
-            homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            let cellIdNum = (2 * self.cellNumber!) + 1
+            self.delegate?.updateRadios(cellIdNum, true)
         }
     }
-    
 }

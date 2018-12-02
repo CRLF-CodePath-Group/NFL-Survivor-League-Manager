@@ -8,22 +8,22 @@
 
 import UIKit
 
-class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate
-{
+class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate {
     var schedule : Schedule!
-    var buttonState = Array(repeating: #imageLiteral(resourceName: "Radio Button.png"), count: 32)
+    var buttonState = [Bool]()
     var cell_num = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var awayTeamLogoImageView: UIImageView!
     @IBOutlet weak var homeTeamLogoImageView: UIImageView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
-
+        for _ in 0...31 {
+            self.buttonState.append(false)
+        }
         NFLAPIManager.grabFullNFLSeason { (schedule, error) in
             if let schedule = schedule {
                 self.schedule = schedule
@@ -34,8 +34,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if schedule != nil {
             return schedule.games[0].count
         } else {
@@ -43,8 +42,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         //let game = games[indexPath.item]
         cell.delegate = self
@@ -52,58 +50,55 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         cell.homeTeamLabel.text = schedule.games[0][indexPath.item].homeTeam.rawValue
         let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].awayTeam.rawValue)")
         let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].homeTeam.rawValue)")
-        cell.cellNumber = cell_num
-        cell_num = cell_num + 1
+        cell.cellNumber = indexPath.row
         cell.awayTeamLogoImageView.image = awayImage
         cell.homeTeamLogoImageView.image = homeImage
-        cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
-        print(cell.cellNumber)
+        let odd = (cell.cellNumber! * 2) + 1
+        let even = (cell.cellNumber! * 2)
+        if even % 2 == 0 && self.buttonState[even] == true {
+            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+        } else {
+            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+        }
+        if odd % 2 == 1 && self.buttonState[odd] == true {
+            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+        } else {
+            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+        }
         return cell
     }
     
-    func updateRadios(_ cell: GameCell, _ homeRadioButton: UIImage?, _ awayRadioButton: UIImage?)
-    {
-        let homePositions = (2*cell.cellNumber)+1
-        let awayPositions = 2*cell.cellNumber
-        
-        //traverse through the array of UIImages
-        for index in buttonState
-        {
-            if homeRadioButton != index
-            {
-                if index == #imageLiteral(resourceName: "Radio Button Fill.png")
-                {
-                    //homeRadioButton = #imageLiteral(resourceName: "Radio Button.png")
-                    cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+    func updateRadios(_ num: Int, _ isHomeTeam: Bool) {
+        for i in 0...self.buttonState.count-1 {
+            if i != num  && self.buttonState[i] == true {
+                self.buttonState[i] = false
+                var cellIdNum = Int()
+                var isHomeTeam = Bool()
+                if i % 2 == 0 {
+                    cellIdNum = i/2
+                    isHomeTeam = false
+                } else {
+                    cellIdNum = (i-1)/2
+                    isHomeTeam = true
                 }
-            }
-            else if awayRadioButton != index
-            {
-                if index == #imageLiteral(resourceName: "Radio Button Fill.png")
-                {
-                    //awayRadioButton = #imageLiteral(resourceName: "Radio Button.png")
-                    cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                for cell in collectionView.visibleCells as! [GameCell] {
+                    if cell.cellNumber! == cellIdNum{
+                        if isHomeTeam {
+                            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                        }else {
+                            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                        }
+                    }
                 }
             }
         }
+        self.buttonState[num] = true
     }
     
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
