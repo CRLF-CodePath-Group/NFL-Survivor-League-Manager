@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paz-ej-ObF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account yet? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ug-zl-Qdt">
-                                <rect key="frame" x="68" y="395" width="157" height="16"/>
+                                <rect key="frame" x="67.5" y="395" width="157" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="M6f-Ec-q1x"/>
                                     <constraint firstAttribute="width" constant="157" id="T5e-6V-ntP"/>
@@ -75,7 +75,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBH-mE-Zkl">
-                                <rect key="frame" x="225" y="389" width="82" height="27"/>
+                                <rect key="frame" x="224.5" y="389" width="82" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="cpF-tY-o5x"/>
                                     <constraint firstAttribute="height" constant="27" id="iNF-ve-zZC"/>
@@ -227,6 +227,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="EzT-Bn-yXI">
                             <connections>
                                 <action selector="didTapLogOut:" destination="0Vs-vV-tql" id="F58-IB-dBw"/>
+                                <segue destination="Pbr-8H-Z8E" kind="show" id="ivg-rM-w5z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -402,49 +403,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="80d-Kp-917">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="188" width="375" height="479"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Co-we-KMq">
-                                    <size key="itemSize" width="170" height="208"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9Co-we-KMq">
+                                    <size key="itemSize" width="187.5" height="205"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCell" id="jjv-Ld-eTN" customClass="GameCell" customModule="NFL_Survivor_League_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="208"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="205"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="208"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="205"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-p6-wn6">
-                                                    <rect key="frame" x="39" y="126" width="92" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Team" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-p6-wn6">
+                                                    <rect key="frame" x="55" y="135" width="103" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Away Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-6c-y4a">
-                                                    <rect key="frame" x="42" y="52" width="86" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Away Team" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-6c-y4a">
+                                                    <rect key="frame" x="55" y="48" width="105" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTx-sd-0Eg">
+                                                    <rect key="frame" x="12" y="37" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfC-nT-kTZ">
+                                                    <rect key="frame" x="11" y="125" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-QE-c6r">
+                                                    <rect key="frame" x="157" y="44" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" backgroundImage="Radio Button">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapAwayRadioButton:" destination="jjv-Ld-eTN" eventType="touchUpInside" id="p84-RJ-atv"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-M3-pmI">
+                                                    <rect key="frame" x="157" y="131" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" backgroundImage="Radio Button"/>
+                                                    <connections>
+                                                        <action selector="didTapHomeRadioButton:" destination="jjv-Ld-eTN" eventType="touchUpInside" id="hmq-YG-lp9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="awayTeamLabel" destination="mv7-6c-y4a" id="xIa-kO-ZAs"/>
+                                            <outlet property="awayTeamLogoImageView" destination="dTx-sd-0Eg" id="Tin-3l-bUV"/>
+                                            <outlet property="awayTeamRadioButton" destination="7Ca-QE-c6r" id="Rm0-cY-efU"/>
                                             <outlet property="homeTeamLabel" destination="XKO-p6-wn6" id="y4b-8o-eMO"/>
+                                            <outlet property="homeTeamLogoImageView" destination="bfC-nT-kTZ" id="PVX-iX-6EY"/>
+                                            <outlet property="homeTeamRadioButon" destination="YcO-M3-pmI" id="nEA-E7-80U"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Sba-YT-2lI"/>
                     </view>
                     <connections>
@@ -468,13 +503,60 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="fEp-yH-qRV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteCell" rowHeight="106" id="fEp-yH-qRV" customClass="InviteCell" customModule="NFL_Survivor_League_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fEp-yH-qRV" id="EyC-lJ-9Kj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="invited you to join" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEW-UN-jq4">
+                                                    <rect key="frame" x="82" y="11" width="134" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&quot;League&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QK-v1-i8B">
+                                                    <rect key="frame" x="224" y="11" width="71" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06g-xy-kTc">
+                                                    <rect key="frame" x="314" y="0.0" width="52" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Accept"/>
+                                                    <connections>
+                                                        <action selector="didAccept:" destination="fEp-yH-qRV" eventType="touchUpInside" id="GqJ-jP-8Uc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmB-s3-tb6">
+                                                    <rect key="frame" x="314" y="55" width="52" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Decline"/>
+                                                    <connections>
+                                                        <action selector="didDecline:" destination="fEp-yH-qRV" eventType="touchUpInside" id="LfP-oZ-oeT"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&quot;User&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37G-Gj-frC">
+                                                    <rect key="frame" x="23" y="5" width="50.5" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="LeagueName" destination="7QK-v1-i8B" id="Sdg-jD-2mR"/>
+                                            <outlet property="Username" destination="37G-Gj-frC" id="Jrt-Ef-Gqu"/>
+                                            <outlet property="acceptButton" destination="06g-xy-kTc" id="Dy2-cs-Ccb"/>
+                                            <outlet property="declineButton" destination="KmB-s3-tb6" id="aPx-Kd-icP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -482,10 +564,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Jmg-og-P0W"/>
                     </view>
+                    <connections>
+                        <outlet property="listViewer" destination="PQh-hj-bQm" id="fbj-Fm-Oou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwD-uC-ypy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="-607"/>
+            <point key="canvasLocation" x="1069.5999999999999" y="-607.64617691154433"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="POC-he-Oo2">
@@ -503,25 +588,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CK1-Vq-DFW">
-                                <rect key="frame" x="68" y="213" width="84" height="21"/>
+                                <rect key="frame" x="67.5" y="213" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grb-oW-OL7">
-                                <rect key="frame" x="68" y="276.5" width="78.5" height="20.5"/>
+                                <rect key="frame" x="67.5" y="276.5" width="78.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHQ-dm-Mid">
-                                <rect key="frame" x="68" y="340" width="53.5" height="20.5"/>
+                                <rect key="frame" x="67.5" y="340" width="53.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MmE-pd-r3v">
-                                <rect key="frame" x="68" y="302" width="240" height="30"/>
+                                <rect key="frame" x="67.5" y="302" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="EH1-8D-SzP"/>
                                     <constraint firstAttribute="height" constant="30" id="xNn-2K-ru0"/>
@@ -531,7 +616,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uh2-K1-Du4">
-                                <rect key="frame" x="68" y="365.5" width="240" height="30"/>
+                                <rect key="frame" x="67.5" y="365.5" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="9HM-Yf-oIs"/>
                                     <constraint firstAttribute="height" constant="30" id="CVX-UZ-svt"/>
@@ -541,13 +626,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yh-FV-mwe">
-                                <rect key="frame" x="68" y="446.5" width="154" height="16"/>
+                                <rect key="frame" x="67.5" y="446.5" width="154" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VM7-Do-3MQ">
-                                <rect key="frame" x="222" y="440.5" width="61" height="28"/>
+                                <rect key="frame" x="221.5" y="440.5" width="61" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Click here"/>
                                 <connections>
@@ -562,7 +647,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5A-2o-1vg">
-                                <rect key="frame" x="68" y="238" width="240" height="30"/>
+                                <rect key="frame" x="67.5" y="238" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="HEm-72-lD3"/>
                                     <constraint firstAttribute="height" constant="30" id="QPm-yL-d4F"/>
@@ -658,9 +743,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Radio Button" width="225" height="225"/>
         <image name="nflSurvivorIcon.whiteOutline" width="2273" height="3071"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="zPT-4I-Bia"/>
+=======
+        <segue reference="132-a6-H5C"/>
+        <segue reference="W9a-99-f2A"/>
+>>>>>>> b17228571bd37cf8ed1559e0a43e6be4b6a26ebb
     </inferredMetricsTieBreakers>
 </document>
