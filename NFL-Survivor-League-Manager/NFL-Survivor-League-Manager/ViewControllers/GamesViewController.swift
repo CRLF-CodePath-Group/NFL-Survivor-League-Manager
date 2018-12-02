@@ -19,6 +19,24 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*   // Do any additional setup after loading the view, typically from a nib.
+         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
+         layout.minimumInteritemSpacing = 0
+         layout.minimumLineSpacing = 0
+         collectionView!.collectionViewLayout = layout*/
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let screenSize = UIScreen.main.bounds
+        
+        layout.itemSize = CGSize(width:screenSize.width/2 , height:89)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView.layer.borderColor = UIColor.white.cgColor
+        collectionView.layer.borderWidth = 2
+        collectionView!.collectionViewLayout = layout
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         for _ in 0...31 {
@@ -36,7 +54,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if schedule != nil {
-            return schedule.games[0].count
+            return schedule.games[10].count
         } else {
             return 0
         }
@@ -46,11 +64,13 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         //let game = games[indexPath.item]
         cell.delegate = self
-        cell.awayTeamLabel.text = schedule.games[0][indexPath.item].awayTeam.rawValue
-        cell.homeTeamLabel.text = schedule.games[0][indexPath.item].homeTeam.rawValue
-        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].awayTeam.rawValue)")
-        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[0][indexPath.row].homeTeam.rawValue)")
+        cell.awayTeamLabel.text = schedule.games[10][indexPath.item].awayTeam.rawValue
+        cell.homeTeamLabel.text = schedule.games[10][indexPath.item].homeTeam.rawValue
+        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[10][indexPath.row].awayTeam.rawValue)")
+        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[10][indexPath.row].homeTeam.rawValue)")
         cell.cellNumber = indexPath.row
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1
         cell.awayTeamLogoImageView.image = awayImage
         cell.homeTeamLogoImageView.image = homeImage
         let odd = (cell.cellNumber! * 2) + 1

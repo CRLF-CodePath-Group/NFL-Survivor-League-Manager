@@ -39,4 +39,5 @@ class GameCell: UICollectionViewCell {
             self.delegate?.updateRadios(cellIdNum, true)
         }
     }
+
 }
