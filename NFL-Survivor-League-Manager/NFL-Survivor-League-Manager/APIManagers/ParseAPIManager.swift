@@ -71,11 +71,20 @@ class ParseAPIManager {
     static func findUserByUsername(_ username: String, completion: @escaping(User?, Bool?) -> ()) {
         let query = PFUser.query()
         query?.whereKey("username", contains: username)
-        
         query?.findObjectsInBackground(block: { (users, error) in
             if users != nil && (users?.count)! > 0{
-                
-                completion(users![0] as? User, true)
+                var found = false
+                if let users = users as? [User] {
+                    for user in users {
+                        if username == user.username {
+                            found = true
+                            completion(user, true)
+                        }
+                    }
+                    if !found {
+                        completion(nil, false)
+                    }
+                }
             } else{
                 //print(error.localizedDescription)
                 completion(nil, false)

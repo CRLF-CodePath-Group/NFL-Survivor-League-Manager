@@ -26,18 +26,34 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @IBAction func didTapInvite(_ sender: Any) {
+    
         if !(self.userInviteTextField.text?.isEmpty)! {
-            
-            ParseAPIManager.findUserByUsername(self.userInviteTextField.text!) { (user, success) in
-                if success! {
-                    
-                    self.userFoundLabel.text = "User found"
-                    self.foundUsers.append(user!)
-                    self.tableView.reloadData()
-                    self.userInviteTextField.text = ""
-                } else {
-                    self.userFoundLabel.text = "User not found"
+            if self.userInviteTextField.text != PFUser.current()?.username {
+                ParseAPIManager.findUserByUsername(self.userInviteTextField.text!) { (user, success) in
+
+                    if success! {
+                        self.userFoundLabel.text = "User found"
+                        print("was sucess")
+                        var alreadyFound = false
+                        for foundUser in self.foundUsers {
+                            if user?.username == foundUser.username {
+                                alreadyFound = true
+                            }
+                        }
+                        if alreadyFound {
+                            self.userFoundLabel.text = "User already found"
+                        } else {
+                            self.foundUsers.append(user!)
+                            self.tableView.reloadData()
+                            self.userFoundLabel.text = "User found"
+                        }
+                        self.userInviteTextField.text = ""
+                    } else {
+                        self.userFoundLabel.text = "User not found"
+                    }
                 }
+            } else {
+                self.userFoundLabel.text = "Trying to find yourself?"
             }
         }
     }
@@ -52,15 +68,13 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func didTapCreate(_ sender: Any) {
+        
         if !((self.newLeagueNameTextField.text?.isEmpty)!) {
             ParseAPIManager.createNewLeague((PFUser.current()?.username)!, self.newLeagueNameTextField.text!) { (league, error) in
                 if let league = league {
-                    print(league.owner)
                     (PFUser.current() as! User).addOwnedLeague(league.objectId!)
                     (PFUser.current() as! User).setValue((PFUser.current() as! User).ownedLeagues, forKey: User.ownedLeagueTag)
                     (PFUser.current() as! User).saveInBackground()
-                    print((PFUser.current() as! User).ownedLeagues.count)
-                    print("Created")
                 } else if let error = error {
                     print(error.localizedDescription)
                 }
