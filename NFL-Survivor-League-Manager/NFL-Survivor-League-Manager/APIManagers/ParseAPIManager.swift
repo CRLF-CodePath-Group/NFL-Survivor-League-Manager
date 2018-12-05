@@ -25,7 +25,7 @@ class ParseAPIManager {
         user.username = username
         user.email = email
         user.password = password
-        user.initUserInfo()
+        user.initVariables()
         user.signUpInBackground { (success, error) in
             if let error = error {
                 completion(nil, error)
@@ -37,14 +37,7 @@ class ParseAPIManager {
         }
     }
     static func createNewLeague(_ owner: String, _ leagueName: String, completion: @escaping(League?, Error?) -> ()) {
-        let league = League()
-        league.initLeague(leagueName, owner)
-        league.owner = owner
-        league.leagueName = leagueName
-        league.hasStarted = false
-        league.currentWeek = 1
-        league.aliveMembers = [String]()
-        league.deadMembers = [String]()
+        let league = League(leagueName, owner)
         league.saveInBackground() {
             (success, error) in
             if success {
@@ -95,8 +88,7 @@ class ParseAPIManager {
         for user in users {
           userObjectIds.append(user.objectId!)
         }
-        let invite = LeagueInvite()
-        invite.leagueInit(league.objectId!, league.leagueName, league.owner, userObjectIds)
+        let invite = LeagueInvite(league.objectId!, league.leagueName, league.owner, userObjectIds)
         invite.saveInBackground()
     }
     static func fetchInvitesForUser(completion: @escaping(Bool?) -> ()) {
@@ -106,21 +98,16 @@ class ParseAPIManager {
                 let allInvites = leagueInvites as! [LeagueInvite]
                 for invite in allInvites {
                     var index = -1
-                    invite.get()
                     if invite.userObjectIds.count > 0 {
                         for i in 0...invite.userObjectIds.count-1 {
                             if invite.userObjectIds[i] == PFUser.current()?.objectId {
                                 index = i
                                 (PFUser.current() as! User).addInivite(invite.leagueId)
-                                (PFUser.current() as! User).saveInBackground()
-                            
                             }
                         }
                     }
                     if index != -1 {
                         invite.userObjectIds.remove(at: index)
-                        invite.saveInfo()
-
                     }
                     if invite.userObjectIds.count == 0 {
                         invite.deleteInBackground()
@@ -134,7 +121,6 @@ class ParseAPIManager {
                 completion(false)
             }
         })
-        (PFUser.current() as! User).saveUserInfo()
         PFUser.current()?.saveInBackground()
         completion(true)
     }

@@ -73,9 +73,9 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
                     if(self.foundUsers.count > 0) {
                         ParseAPIManager.sendUsersInvites(self.foundUsers, league)
                     }
-                    (PFUser.current() as! User).addLeague(league.objectId!)
-                    (PFUser.current() as! User).setValue((PFUser.current() as! User).leagues, forKey: User.leaguesTag)
-                    (PFUser.current() as! User).saveInBackground()
+                    let user = PFUser.current() as! User
+                    user.addLeague(league.objectId!)
+                    
                 } else if let error = error {
                     print(error.localizedDescription)
                 }

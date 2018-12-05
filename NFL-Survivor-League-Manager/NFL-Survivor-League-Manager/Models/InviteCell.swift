@@ -31,13 +31,16 @@ class InviteCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func didTapAccept(_ sender: Any) {
+        let user = PFUser.current() as! User
+        user.addLeague((league?.objectId)!)
+        league?.addAliveMember(user.objectId!)
+        delegate?.removeCell(self.indexPath!)
     }
     
     @IBAction func didTapDecline(_ sender: Any) {
         let user = PFUser.current() as! User
         user.removeInvite((league?.objectId)!)
         delegate?.removeCell(self.indexPath!)
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadInviteTable"), object: nil)
     }
     
 }

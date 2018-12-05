@@ -8,14 +8,8 @@
 
 import Foundation
 import Parse
-class League : PFObject{
-    static let ownerTag = "ownerTag"
-    static let leagueNameTag = "leagueNameTag"
-    static let currentWeekTag = "currentWeekTag"
-    static let aliveMembersTag = "aliveMembersTag"
-    static let deadMembersTag = "deadMembersTag"
-    static let hasStartedTag = "hasStartedTage"
-    static let picksTag = "picksTag"
+class League : PFObject, PFSubclassing{
+
     
     @NSManaged var owner : String
     @NSManaged var leagueName : String
@@ -28,21 +22,33 @@ class League : PFObject{
     override init() {
         super.init()
     }
-    
-    func initLeague(_ leagueName: String, _ ownerName: String) {
-        self[League.ownerTag] = ownerName
-        self[League.leagueNameTag] = leagueName
-        self[League.currentWeekTag] = currentWeek
-        self[League.aliveMembersTag] = aliveMembers
-        self[League.deadMembersTag] = deadMembers
-        self[League.hasStartedTag] = hasStarted
-        self[League.picksTag] = picks
+    init(_ leagueName: String, _ ownerName: String) {
+        super.init()
+        self.owner = ownerName
+        self.leagueName = leagueName
+        self.currentWeek = 1
+        self.aliveMembers = [String]()
+        self.deadMembers = [String]()
+        self.picks = [String : [String]]()
+        self.hasStarted = false
     }
-}
-extension League : PFSubclassing {
+    
+    func addAliveMember(_ memmberId: String) {
+        var doesContain = false
+        for s in self.aliveMembers {
+            if s == memmberId {
+                doesContain = true
+                break
+            }
+        }
+        if !doesContain {
+            self.aliveMembers.append(memmberId)
+        }
+        self.saveInBackground()
+    }
     static func parseClassName() -> String {
         return "League"
     }
-    
-    
+
 }
+

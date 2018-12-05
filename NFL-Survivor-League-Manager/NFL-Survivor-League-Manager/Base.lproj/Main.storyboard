@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="NFL_Survivor_League_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="NFL_Survivor_League_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,7 +590,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmB-s3-tb6">
-                                                    <rect key="frame" x="323" y="0.0" width="52" height="43"/>
+                                                    <rect key="frame" x="323" y="5" width="52" height="43"/>
                                                     <color key="backgroundColor" red="1" green="0.1378527564" blue="0.1416739444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="iRe-jD-1VE"/>
@@ -611,7 +611,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06g-xy-kTc">
-                                                    <rect key="frame" x="266" y="0.0" width="49" height="43"/>
+                                                    <rect key="frame" x="266" y="5" width="49" height="43"/>
                                                     <color key="backgroundColor" red="0.40453594923019409" green="0.8615272045135498" blue="0.2214336097240448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="7zx-bc-hON"/>
@@ -629,8 +629,8 @@
                                                 <constraint firstItem="06g-xy-kTc" firstAttribute="leading" secondItem="1Pc-eY-hbj" secondAttribute="trailing" constant="5" id="3wZ-Fx-jvv"/>
                                                 <constraint firstItem="KmB-s3-tb6" firstAttribute="leading" secondItem="06g-xy-kTc" secondAttribute="trailing" constant="8" id="5xA-El-9RM"/>
                                                 <constraint firstItem="KmB-s3-tb6" firstAttribute="leading" secondItem="06g-xy-kTc" secondAttribute="trailing" constant="8" id="ROu-Nd-tnR"/>
-                                                <constraint firstItem="06g-xy-kTc" firstAttribute="top" secondItem="EyC-lJ-9Kj" secondAttribute="top" id="TyS-1O-vDH"/>
-                                                <constraint firstItem="KmB-s3-tb6" firstAttribute="top" secondItem="EyC-lJ-9Kj" secondAttribute="top" id="b3G-to-vFz"/>
+                                                <constraint firstItem="06g-xy-kTc" firstAttribute="top" secondItem="EyC-lJ-9Kj" secondAttribute="top" constant="5" id="TyS-1O-vDH"/>
+                                                <constraint firstItem="KmB-s3-tb6" firstAttribute="top" secondItem="EyC-lJ-9Kj" secondAttribute="top" constant="5" id="b3G-to-vFz"/>
                                                 <constraint firstAttribute="trailing" secondItem="KmB-s3-tb6" secondAttribute="trailing" id="f23-XB-jk0"/>
                                                 <constraint firstItem="1Pc-eY-hbj" firstAttribute="top" secondItem="EyC-lJ-9Kj" secondAttribute="top" constant="11" id="gyz-0q-XQ8"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Pc-eY-hbj" secondAttribute="bottom" constant="11.5" id="hPk-1E-cye"/>
@@ -929,6 +929,6 @@
         <image name="nflSurvivorIcon.whiteOutline" width="2273" height="3071"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g4a-S9-Yw1"/>
+        <segue reference="W9a-99-f2A"/>
     </inferredMetricsTieBreakers>
 </document>

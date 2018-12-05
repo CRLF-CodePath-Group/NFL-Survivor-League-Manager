@@ -13,9 +13,7 @@ class Invite : PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "Invite"
     }
-    static let leagueNameTag = "leagueName"
-    static let leagueIDTag = "leagueID"
-    static let leagueOwnerTag = "leagueOwner"
+
     
     @NSManaged var leagueName: String
     @NSManaged var leagueID : String
@@ -31,17 +29,9 @@ class Invite : PFObject, PFSubclassing {
         self.leagueOwner = leagueOwner
         self.leagueName = leagueName
         self.leagueID = leagueID
-        
-        self[Invite.leagueIDTag] = self.leagueID
-        self[Invite.leagueNameTag] = self.leagueName
-        self[Invite.leagueOwnerTag] = self.leagueOwner
+
     }
-    func saveInfo() {
-        
-        self[Invite.leagueIDTag] = self.leagueID
-        self[Invite.leagueNameTag] = self.leagueName
-        self[Invite.leagueOwnerTag] = self.leagueOwner
-    }
+
     
     
 }

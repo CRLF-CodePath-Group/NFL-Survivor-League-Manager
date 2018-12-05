@@ -10,10 +10,9 @@ import UIKit
 import Parse
 class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, InviteCellDelegate {
     func removeCell(_ indexPath: IndexPath) {
-        print("hehesjdklsjlkdjklsldjldjkl")
         self.leagues.remove(at: indexPath.row)
+        self.listViewer.deleteRows(at: [indexPath], with: .fade)
         self.listViewer.reloadData()
-        print(leagues.count)
     }
     
 
@@ -23,8 +22,6 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var listViewer: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadInviteTable"), object: nil)
         listViewer.delegate = self
         listViewer.dataSource = self
         self.updateInvites()
@@ -33,10 +30,7 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Do any additional setup after loading the view.
     }
-    @objc func reloadData() {
-        
-        self.listViewer.reloadData()
-    }
+
     func updateInvites() {
         ParseAPIManager.fetchInvitesForUser { (success) in
             if success! {

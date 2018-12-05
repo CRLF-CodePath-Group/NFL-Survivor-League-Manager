@@ -61,6 +61,9 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     @IBAction func didTapLogOut(_ sender: Any) {
+        PFUser.logOut()
+        let login = storyboard?.instantiateViewController(withIdentifier: "LogInViewController")
+        self.present(login!, animated: true, completion: nil)
     }
     
   

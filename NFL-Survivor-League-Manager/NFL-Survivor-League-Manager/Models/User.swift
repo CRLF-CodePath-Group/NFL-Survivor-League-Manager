@@ -11,25 +11,18 @@ import Parse
 
 class User : PFUser{
 
-    static let weekParseUserTag = "week"
-    static let weekCount = 17
-    static let leaguesTag = "leaguesTag"
-    static let inviteTag = "inviteTag"
     @NSManaged var leagues : [String]
     @NSManaged var memberLeague : [String]
     @NSManaged var invites : [String]
   
     override init() {
         super.init()
-        
-        
+
     }
-    func initUserInfo() {
-        self.invites = self[User.inviteTag] as! [String]
-        self.leagues = self[User.leaguesTag] as! [String]
-        
-        self[User.leaguesTag] = leagues
-        self[User.inviteTag] = invites
+    func initVariables() {
+        self.leagues = [String]()
+        self.memberLeague = [String]()
+        self.invites = [String]()
     }
     func addLeague(_ leagueId: String) {
         var doesContain = false
@@ -41,11 +34,9 @@ class User : PFUser{
         if !doesContain {
             leagues.append(leagueId)
         }
+        self.saveInBackground()
     }
-    func saveUserInfo() {
-        self[User.leaguesTag] = self.leagues
-        self[User.inviteTag] = invites
-    }
+
     func addInivite(_ invite: String) {
         var doesContain = false
         for s in self.invites {
@@ -56,7 +47,7 @@ class User : PFUser{
         if !doesContain {
             self.invites.append(invite)
         }
-        self.saveUserInfo()
+        self.saveInBackground()
     }
     func removeInvite(_ invite: String) {
         if self.invites.count > 0 {
@@ -69,9 +60,9 @@ class User : PFUser{
             }
             if index != -1 {
                 self.invites.remove(at: index)
-                self.saveUserInfo()
-                self.saveInBackground()
+                
             }
         }
+        self.saveInBackground()
     }
 }
