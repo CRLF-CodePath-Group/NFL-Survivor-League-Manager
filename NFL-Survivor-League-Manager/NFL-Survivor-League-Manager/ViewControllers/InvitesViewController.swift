@@ -24,6 +24,9 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         listViewer.delegate = self
         listViewer.dataSource = self
+        listViewer.layer.borderWidth = 2
+        listViewer.layer.borderColor = UIColor.white.cgColor
+
         self.updateInvites()
         self.fetchLeagues()
         self.listViewer.reloadData()
@@ -71,6 +74,9 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.league = leagues[indexPath.row]
             cell.indexPath = indexPath
             cell.delegate = self
+            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.borderWidth = 1
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         } else {
             return UITableViewCell()

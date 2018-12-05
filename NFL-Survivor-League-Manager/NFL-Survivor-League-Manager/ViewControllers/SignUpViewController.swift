@@ -29,9 +29,9 @@ class SignUpViewController: UIViewController {
             ParseAPIManager.signUpUser(self.usernameTextField.text!, password: self.passworldTextField.text!, self.emailTextField.text!) { (user, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                } else if let user = user {
-                    print("Success in creating user:")
-                    print(user.username!)
+                } else if user != nil {
+                   // print("Success in creating user:")
+                    //print(user.username!)
                     self.performSegue(withIdentifier: "signUpSegue", sender: nil)
                     
                 }

@@ -11,7 +11,8 @@ import UIKit
 class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate {
     var schedule : Schedule!
     var buttonState = [Bool]()
-    
+    var league = League()
+    var currentWeekDisplayed = 0
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var weekNumLabel: UILabel!
@@ -39,11 +40,19 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
                 print(error.localizedDescription)
             }
         }
+        
+        self.currentWeekDisplayed = self.league.currentWeek - 1
+        if self.currentWeekDisplayed == 0 {
+            self.previousButton.isHidden = true
+        }
+        if self.currentWeekDisplayed == 16 {
+            self.nextButton.isHidden = true
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if schedule != nil {
-            return schedule.games[10].count
+            return schedule.games[self.currentWeekDisplayed].count
         } else {
             return 0
         }
@@ -53,10 +62,10 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         //let game = games[indexPath.item]
         cell.delegate = self
-        cell.awayTeamLabel.text = schedule.games[10][indexPath.item].awayTeam.rawValue
-        cell.homeTeamLabel.text = schedule.games[10][indexPath.item].homeTeam.rawValue
-        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[10][indexPath.row].awayTeam.rawValue)")
-        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[10][indexPath.row].homeTeam.rawValue)")
+        cell.awayTeamLabel.text = schedule.games[self.currentWeekDisplayed][indexPath.item].awayTeam.rawValue
+        cell.homeTeamLabel.text = schedule.games[self.currentWeekDisplayed][indexPath.item].homeTeam.rawValue
+        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam.rawValue)")
+        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam.rawValue)")
         cell.cellNumber = indexPath.row
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
@@ -123,10 +132,30 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         collectionView.reloadData()
     }
     @IBAction func didTapPrevious(_ sender: Any) {
-        
+        if self.currentWeekDisplayed > 0 {
+            self.currentWeekDisplayed -= 1
+            if self.currentWeekDisplayed == 0 {
+                self.previousButton.isHidden = true
+                
+            }
+        }
+        if self.currentWeekDisplayed < 16 {
+            self.nextButton.isHidden = false
+        }
+        self.collectionView.reloadData()
     }
     
     @IBAction func didTapNext(_ sender: Any) {
+        if self.currentWeekDisplayed < 16 {
+            self.currentWeekDisplayed += 1
+            if self.currentWeekDisplayed == 16 {
+                self.nextButton.isHidden = true
+            }
+        }
+        if self.currentWeekDisplayed > 0 {
+            self.previousButton.isHidden = false
+        }
+        self.collectionView.reloadData()
     }
     
     

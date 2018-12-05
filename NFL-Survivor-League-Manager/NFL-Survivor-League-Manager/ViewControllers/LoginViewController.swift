@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
     @IBAction func tappedLogin(_ sender: Any) {
         if(!((self.usernameTextField.text?.isEmpty)!) && !((self.passwordTextField.text?.isEmpty)!)) {
             ParseAPIManager.logInUser(self.usernameTextField.text!, self.passwordTextField.text!) { (user, error) in
-                if let user = user {
-                    print(user.username!)
+                if user != nil {
+                    //print(user.username!)
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 } else if let error = error {
                     print(error.localizedDescription)

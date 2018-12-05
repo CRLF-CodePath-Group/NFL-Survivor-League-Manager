@@ -10,10 +10,10 @@ import UIKit
 import Parse
 class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+
     @IBOutlet weak var leagueTableView: UITableView!
     var leagues = [League]()
-
+    var leagueToSend = League()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.leagueTableView.delegate = self
@@ -21,13 +21,10 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
         getUserLeagues()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
         ParseAPIManager.fetchInvitesForUser { (success) in
-            if success! {
-                print("loaded")
-                
-            } else {
-                print("fail")
-            }
+   
         }
+        self.leagueTableView.layer.borderColor = UIColor.white.cgColor
+        self.leagueTableView.layer.borderWidth = 2
         // Do any additional setup after loading the view.
     }
     func getUserLeagues() {
@@ -83,28 +80,44 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.leagues.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
-            if indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.lightGray
-            } else {
-                cell.backgroundColor = UIColor.lightText
-            }
-            cell.leagueNameLabel.text = self.leagues[indexPath.row].leagueName
+            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.borderWidth = 1
+            cell.selectionStyle = .none
+            cell.league = self.leagues[indexPath.row]
             
         
             return cell
         }
         return UITableViewCell()
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        if self.leagues[indexPath.row].owner == PFUser.current()?.username {
+            self.leagueToSend = self.leagues[indexPath.row]
+            performSegue(withIdentifier: "toOwnedLeagueView", sender: nil)
+        } else {
+            self.leagueToSend = self.leagues[indexPath.row]
+            performSegue(withIdentifier: "toGamePickerView", sender: nil)
+            
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOwnedLeagueView" {
-            
+            let destination = segue.destination as! UINavigationController
+            let vc = destination.topViewController as! OwnerDetailsViewController
+            vc.league = self.leagueToSend
+        }
+        if segue.identifier == "toGamePickerView" {
+            let destination = segue.destination as! UINavigationController
+            let vc = destination.topViewController as! GamesViewController
+            vc.league = self.leagueToSend
         }
         if segue.identifier == "toInvites" {
             print("test")
             ParseAPIManager.fetchInvitesForUser { (success) in
                 if success! {
                     usleep(400000)
-                    print("loaded")
+                    //print("loaded")
                     
                 } else {
                     print("fail")
