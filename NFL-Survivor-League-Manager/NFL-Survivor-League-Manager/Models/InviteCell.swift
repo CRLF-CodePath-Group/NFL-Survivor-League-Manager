@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import Parse
 
+protocol InviteCellDelegate: class {
+    func removeCell(_ indexPath: IndexPath)
+    
+}
 class InviteCell: UITableViewCell {
-
+    var league : League?
+    var indexPath : IndexPath?
+    var delegate : InviteCellDelegate?
     @IBOutlet weak var leagueInviteInfoLabel: UILabel!
  
     override func awakeFromNib() {
@@ -27,6 +34,10 @@ class InviteCell: UITableViewCell {
     }
     
     @IBAction func didTapDecline(_ sender: Any) {
+        let user = PFUser.current() as! User
+        user.removeInvite((league?.objectId)!)
+        delegate?.removeCell(self.indexPath!)
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadInviteTable"), object: nil)
     }
     
 }

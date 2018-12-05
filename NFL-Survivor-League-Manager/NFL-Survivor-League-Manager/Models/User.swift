@@ -25,7 +25,8 @@ class User : PFUser{
         
     }
     func initUserInfo() {
-
+        self.invites = self[User.inviteTag] as! [String]
+        self.leagues = self[User.leaguesTag] as! [String]
         
         self[User.leaguesTag] = leagues
         self[User.inviteTag] = invites
@@ -56,5 +57,21 @@ class User : PFUser{
             self.invites.append(invite)
         }
         self.saveUserInfo()
+    }
+    func removeInvite(_ invite: String) {
+        if self.invites.count > 0 {
+            var index = -1
+            for i in 0...self.invites.count-1 {
+                if self.invites[i] == invite {
+                    index = i
+                    break
+                }
+            }
+            if index != -1 {
+                self.invites.remove(at: index)
+                self.saveUserInfo()
+                self.saveInBackground()
+            }
+        }
     }
 }

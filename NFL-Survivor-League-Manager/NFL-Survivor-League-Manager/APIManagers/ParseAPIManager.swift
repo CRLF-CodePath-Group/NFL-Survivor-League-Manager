@@ -134,7 +134,7 @@ class ParseAPIManager {
                 completion(false)
             }
         })
-
+        (PFUser.current() as! User).saveUserInfo()
         PFUser.current()?.saveInBackground()
         completion(true)
     }

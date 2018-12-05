@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
         if(!((self.usernameTextField.text?.isEmpty)!) && !((self.passwordTextField.text?.isEmpty)!)) {
             ParseAPIManager.logInUser(self.usernameTextField.text!, self.passwordTextField.text!) { (user, error) in
                 if let user = user {
-                    print(user.objectId!)
+                    user.initUserInfo()
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 } else if let error = error {
                     print(error.localizedDescription)
