@@ -7,16 +7,23 @@
 //
 
 import UIKit
-
+import Parse
 class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var inviteList = [Invite]()
     @IBOutlet weak var listViewer: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         listViewer.delegate = self
         listViewer.dataSource = self
-        listViewer.rowHeight = 120
+        ParseAPIManager.fetchInvitesForUser { (success) in
+            if success! {
+                
+                self.listViewer.reloadData()
+            } else {
+                print("Huh?")
+            }
+        }
+        self.listViewer.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -26,23 +33,15 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 10
+        return (PFUser.current() as! User).invites.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = listViewer.dequeueReusableCell(withIdentifier: "InviteCell", for: indexPath) as! InviteCell
-        //cell.listVariable = inviteList[indexPath.row]
+        let cell = listViewer.dequeueReusableCell(withIdentifier: "LeagueInviteCell", for: indexPath) as! InviteCell
+        let user = PFUser.current() as! User
+        cell.leagueInviteInfoLabel.text = "test"
         return cell
     }
-   
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

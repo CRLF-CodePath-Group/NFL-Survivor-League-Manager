@@ -16,7 +16,6 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var userInviteTextField: UITextField!
     var toBeInvitedUsers = [String]()
     var foundUsers = [User]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -30,7 +29,6 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
         if !(self.userInviteTextField.text?.isEmpty)! {
             if self.userInviteTextField.text != PFUser.current()?.username {
                 ParseAPIManager.findUserByUsername(self.userInviteTextField.text!) { (user, success) in
-
                     if success! {
                         self.userFoundLabel.text = "User found"
                         print("was sucess")
@@ -72,14 +70,18 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
         if !((self.newLeagueNameTextField.text?.isEmpty)!) {
             ParseAPIManager.createNewLeague((PFUser.current()?.username)!, self.newLeagueNameTextField.text!) { (league, error) in
                 if let league = league {
-                    (PFUser.current() as! User).addOwnedLeague(league.objectId!)
-                    (PFUser.current() as! User).setValue((PFUser.current() as! User).ownedLeagues, forKey: User.ownedLeagueTag)
+                    if(self.foundUsers.count > 0) {
+                        ParseAPIManager.sendUsersInvites(self.foundUsers, league)
+                    }
+                    (PFUser.current() as! User).addLeague(league.objectId!)
+                    (PFUser.current() as! User).setValue((PFUser.current() as! User).leagues, forKey: User.leaguesTag)
                     (PFUser.current() as! User).saveInBackground()
                 } else if let error = error {
                     print(error.localizedDescription)
                 }
                 
             }
+            
     
         }
         performSegue(withIdentifier: "toSurvivorHub", sender: nil)
@@ -102,7 +104,7 @@ class NewLeagueViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSurvivorHub" {
-            usleep(200000)
+            usleep(400000)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
         }
     }

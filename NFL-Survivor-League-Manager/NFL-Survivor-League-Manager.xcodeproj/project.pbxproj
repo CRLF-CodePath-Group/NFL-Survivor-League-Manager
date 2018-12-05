@@ -10,6 +10,10 @@
 		36BDDA4321B2234200E7B041 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDDA4221B2234200E7B041 /* InviteCell.swift */; };
 		469F166B70B98160F7100AAF /* Pods_NFL_Survivor_League_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */; };
 		5B2165BE21B0AC2600F6F4B6 /* NewUserInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */; };
+		5B2165C021B66B7600F6F4B6 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165BF21B66B7600F6F4B6 /* LeagueCell.swift */; };
+		5B2165C221B677EF00F6F4B6 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165C121B677EF00F6F4B6 /* Invite.swift */; };
+		5B2165C421B68C5A00F6F4B6 /* LeagueInvite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165C321B68C5A00F6F4B6 /* LeagueInvite.swift */; };
+		5B2165C621B76F1A00F6F4B6 /* OwnerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2165C521B76F1A00F6F4B6 /* OwnerDetailsViewController.swift */; };
 		5B655C0A21A921A900065B94 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0921A921A900065B94 /* Schedule.swift */; };
 		5B655C0C21A92CC400065B94 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0B21A92CC400065B94 /* Team.swift */; };
 		5B655C0E21ABC5D200065B94 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B655C0D21ABC5D200065B94 /* LoginViewController.swift */; };
@@ -25,10 +29,8 @@
 		5B717372217AC286009BEC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B717370217AC286009BEC6D /* LaunchScreen.storyboard */; };
 		5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B90BF8321A8FE1B0085DF73 /* Game.swift */; };
 		5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */; };
-		5BA99C2121AF608600C8DEC5 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA99C2021AF608600C8DEC5 /* Invite.swift */; };
 		5BA99C2321AF65CF00C8DEC5 /* NewLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */; };
 		5BA99C2521AF661B00C8DEC5 /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */; };
-		5BF14A9721AFBB0F0052F3FC /* OwnedLeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */; };
 		9B8D988E21B0BC3B000617A1 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D988D21B0BC3B000617A1 /* GameCell.swift */; };
 		9B8D989021B0BD34000617A1 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D988F21B0BD34000617A1 /* GamesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +39,10 @@
 		0133CBE5AE5C8944FABDB749 /* Pods-NFL-Survivor-League-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFL-Survivor-League-Manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-NFL-Survivor-League-Manager/Pods-NFL-Survivor-League-Manager.release.xcconfig"; sourceTree = "<group>"; };
 		36BDDA4221B2234200E7B041 /* InviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCell.swift; sourceTree = "<group>"; };
 		5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserInviteCell.swift; sourceTree = "<group>"; };
+		5B2165BF21B66B7600F6F4B6 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
+		5B2165C121B677EF00F6F4B6 /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		5B2165C321B68C5A00F6F4B6 /* LeagueInvite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInvite.swift; sourceTree = "<group>"; };
+		5B2165C521B76F1A00F6F4B6 /* OwnerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerDetailsViewController.swift; sourceTree = "<group>"; };
 		5B655C0921A921A900065B94 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5B655C0B21A92CC400065B94 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		5B655C0D21ABC5D200065B94 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -54,10 +60,8 @@
 		5B717373217AC286009BEC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B90BF8321A8FE1B0085DF73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5B90BF8521A8FE4A0085DF73 /* NFLAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLAPIManager.swift; sourceTree = "<group>"; };
-		5BA99C2021AF608600C8DEC5 /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLeagueViewController.swift; sourceTree = "<group>"; };
 		5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
-		5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedLeagueCell.swift; sourceTree = "<group>"; };
 		9B8D988D21B0BC3B000617A1 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		9B8D988F21B0BD34000617A1 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		AA0DE98974B84EE1CD2A57BE /* Pods_NFL_Survivor_League_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NFL_Survivor_League_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,10 +123,11 @@
 				5B655C1321ABC73E00065B94 /* User.swift */,
 				5B655C1721AF150A00065B94 /* League.swift */,
 				5B655C1921AF23AE00065B94 /* Pick.swift */,
-				5BA99C2021AF608600C8DEC5 /* Invite.swift */,
-				5BF14A9621AFBB0F0052F3FC /* OwnedLeagueCell.swift */,
 				5B2165BD21B0AC2600F6F4B6 /* NewUserInviteCell.swift */,
 				36BDDA4221B2234200E7B041 /* InviteCell.swift */,
+				5B2165BF21B66B7600F6F4B6 /* LeagueCell.swift */,
+				5B2165C121B677EF00F6F4B6 /* Invite.swift */,
+				5B2165C321B68C5A00F6F4B6 /* LeagueInvite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				5BA99C2221AF65CF00C8DEC5 /* NewLeagueViewController.swift */,
 				5BA99C2421AF661B00C8DEC5 /* InvitesViewController.swift */,
 				9B8D988F21B0BD34000617A1 /* GamesViewController.swift */,
+				5B2165C521B76F1A00F6F4B6 /* OwnerDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,23 +288,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BF14A9721AFBB0F0052F3FC /* OwnedLeagueCell.swift in Sources */,
+				5B2165C621B76F1A00F6F4B6 /* OwnerDetailsViewController.swift in Sources */,
 				5B655C1A21AF23AE00065B94 /* Pick.swift in Sources */,
 				5B655C0E21ABC5D200065B94 /* LoginViewController.swift in Sources */,
 				9B8D989021B0BD34000617A1 /* GamesViewController.swift in Sources */,
 				5B655C1021ABC5DF00065B94 /* SignUpViewController.swift in Sources */,
 				5B655C0C21A92CC400065B94 /* Team.swift in Sources */,
 				5BA99C2321AF65CF00C8DEC5 /* NewLeagueViewController.swift in Sources */,
-				5BA99C2121AF608600C8DEC5 /* Invite.swift in Sources */,
 				5B2165BE21B0AC2600F6F4B6 /* NewUserInviteCell.swift in Sources */,
+				5B2165C221B677EF00F6F4B6 /* Invite.swift in Sources */,
 				5B655C1C21AF29D400065B94 /* SurvivorHubViewController.swift in Sources */,
 				5B90BF8421A8FE1B0085DF73 /* Game.swift in Sources */,
 				5B655C1421ABC73E00065B94 /* User.swift in Sources */,
 				5B655C1621ABC75E00065B94 /* ParseAPIManager.swift in Sources */,
 				36BDDA4321B2234200E7B041 /* InviteCell.swift in Sources */,
 				5B717368217AC283009BEC6D /* AppDelegate.swift in Sources */,
+				5B2165C021B66B7600F6F4B6 /* LeagueCell.swift in Sources */,
 				5B655C0A21A921A900065B94 /* Schedule.swift in Sources */,
 				5B655C1821AF150A00065B94 /* League.swift in Sources */,
+				5B2165C421B68C5A00F6F4B6 /* LeagueInvite.swift in Sources */,
 				9B8D988E21B0BC3B000617A1 /* GameCell.swift in Sources */,
 				5BA99C2521AF661B00C8DEC5 /* InvitesViewController.swift in Sources */,
 				5B90BF8621A8FE4A0085DF73 /* NFLAPIManager.swift in Sources */,

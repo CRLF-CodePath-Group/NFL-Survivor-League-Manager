@@ -10,30 +10,23 @@ import UIKit
 
 class InviteCell: UITableViewCell {
 
-    @IBOutlet weak var Username: UILabel!
-    @IBOutlet weak var LeagueName: UILabel!
-    @IBOutlet weak var acceptButton: UIButton!
-    @IBOutlet weak var declineButton: UIButton!
-    var listVariable: Invite!{
-        didSet{
-            //add later.
-        }
-    }
+    @IBOutlet weak var leagueInviteInfoLabel: UILabel!
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    @IBAction func didAccept(_ sender: Any) {
-    }
-    
-    @IBAction func didDecline(_ sender: Any) {
-    }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
+    @IBAction func didTapAccept(_ sender: Any) {
+    }
+    
+    @IBAction func didTapDecline(_ sender: Any) {
+    }
+    
 }

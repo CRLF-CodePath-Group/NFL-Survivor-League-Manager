@@ -11,23 +11,31 @@ import Parse
 class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    var userOwnedLeagues = [League]()
-    @IBOutlet weak var memberTableView: UITableView!
-    @IBOutlet weak var ownedTableView: UITableView!
+    @IBOutlet weak var leagueTableView: UITableView!
+    var leagues = [League]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        ownedTableView.dataSource = self
-        ownedTableView.delegate = self
+        self.leagueTableView.delegate = self
+        self.leagueTableView.dataSource = self
         getUserLeagues()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
+        ParseAPIManager.fetchInvitesForUser { (success) in
+            if success! {
+                print("loaded")
+                
+            } else {
+                print("fail")
+            }
+        }
         // Do any additional setup after loading the view.
     }
     func getUserLeagues() {
         let user = PFUser.current() as! User
-        ParseAPIManager.getLeagueById(user.ownedLeagues) { (leagues, error) in
+        ParseAPIManager.getLeagueById(user.leagues) { (leagues, error) in
             if let leagues = leagues {
-                self.userOwnedLeagues = leagues
-                self.ownedTableView.reloadData()
+                self.leagues = leagues
+                self.leagueTableView.reloadData()
             } else if let error = error {
                 print(error.localizedDescription)
             }
@@ -54,23 +62,30 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
     }
     @IBAction func didTapLogOut(_ sender: Any) {
     }
+    
+  
+    
+    @IBAction func didTapInvites(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toInvites", sender: nil)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.ownedTableView {
-            
-            return self.userOwnedLeagues.count
+        if self.leagues.count > 0 {
+            return self.leagues.count
+        } else {
+            return 0;
         }
-        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.ownedTableView && self.userOwnedLeagues.count > 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ownedTableCell") as! OwnedLeagueCell
+        if self.leagues.count > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
             if indexPath.row % 2 == 0 {
                 cell.backgroundColor = UIColor.lightGray
             } else {
                 cell.backgroundColor = UIColor.lightText
             }
-            cell.leagueNameLabel.text = self.userOwnedLeagues[indexPath.row].leagueName
+            cell.leagueNameLabel.text = self.leagues[indexPath.row].leagueName
             
         
             return cell
@@ -80,6 +95,18 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOwnedLeagueView" {
             
+        }
+        if segue.identifier == "toInvites" {
+            print("test")
+            ParseAPIManager.fetchInvitesForUser { (success) in
+                if success! {
+                    usleep(400000)
+                    print("loaded")
+                    
+                } else {
+                    print("fail")
+                }
+            }
         }
     }
 }

@@ -1,20 +1,20 @@
 //
-//  OwnedLeagueCell.swift
+//  LeagueCell.swift
 //  NFL-Survivor-League-Manager
 //
-//  Created by Jacob Frick on 11/28/18.
+//  Created by Jacob Frick on 12/3/18.
 //  Copyright © 2018 Jacob Frick. All rights reserved.
 //
 
 import UIKit
 
-class OwnedLeagueCell: UITableViewCell {
-    
-    
+class LeagueCell: UITableViewCell {
+
+    @IBOutlet weak var isOwnerImageView: UIImageView!
     @IBOutlet weak var leagueNameLabel: UILabel!
-    var league : League?
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 

@@ -38,14 +38,13 @@ class ParseAPIManager {
     }
     static func createNewLeague(_ owner: String, _ leagueName: String, completion: @escaping(League?, Error?) -> ()) {
         let league = League()
-        
+        league.initLeague(leagueName, owner)
         league.owner = owner
         league.leagueName = leagueName
         league.hasStarted = false
         league.currentWeek = 1
         league.aliveMembers = [String]()
         league.deadMembers = [String]()
-        league.initLeague(leagueName, owner)
         league.saveInBackground() {
             (success, error) in
             if success {
@@ -90,5 +89,53 @@ class ParseAPIManager {
                 completion(nil, false)
             }
         })
+    }
+    static func sendUsersInvites(_ users: [User], _ league: League) {
+        var userObjectIds = [String]()
+        for user in users {
+          userObjectIds.append(user.objectId!)
+        }
+        let invite = LeagueInvite()
+        invite.leagueInit(league.objectId!, league.leagueName, league.owner, userObjectIds)
+        invite.saveInBackground()
+    }
+    static func fetchInvitesForUser(completion: @escaping(Bool?) -> ()) {
+        let query = LeagueInvite.query()
+        query?.findObjectsInBackground(block: { (leagueInvites, error) in
+            if let leagueInvites = leagueInvites{
+                let allInvites = leagueInvites as! [LeagueInvite]
+                for invite in allInvites {
+                    var index = -1
+                    invite.get()
+                    if invite.userObjectIds.count > 0 {
+                        for i in 0...invite.userObjectIds.count-1 {
+                            if invite.userObjectIds[i] == PFUser.current()?.objectId {
+                                index = i
+                                (PFUser.current() as! User).addInivite(invite.leagueId)
+                                (PFUser.current() as! User).saveInBackground()
+                            
+                            }
+                        }
+                    }
+                    if index != -1 {
+                        invite.userObjectIds.remove(at: index)
+                        invite.saveInfo()
+
+                    }
+                    if invite.userObjectIds.count == 0 {
+                        invite.deleteInBackground()
+                    } else {
+                        invite.saveInBackground()
+                    }
+                }
+                
+            } else if let error = error {
+                print(error.localizedDescription)
+                completion(false)
+            }
+        })
+
+        PFUser.current()?.saveInBackground()
+        completion(true)
     }
 }

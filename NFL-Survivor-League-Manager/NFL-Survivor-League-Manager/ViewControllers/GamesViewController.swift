@@ -11,7 +11,12 @@ import UIKit
 class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate {
     var schedule : Schedule!
     var buttonState = [Bool]()
-    var cell_num = 0
+    
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var weekNumLabel: UILabel!
+    
+    @IBOutlet weak var leagueNameLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var awayTeamLogoImageView: UIImageView!
@@ -19,24 +24,8 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        /*   // Do any additional setup after loading the view, typically from a nib.
-         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
-         layout.minimumInteritemSpacing = 0
-         layout.minimumLineSpacing = 0
-         collectionView!.collectionViewLayout = layout*/
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let screenSize = UIScreen.main.bounds
-        
-        layout.itemSize = CGSize(width:screenSize.width/2 , height:89)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        collectionView.layer.borderColor = UIColor.white.cgColor
-        collectionView.layer.borderWidth = 2
-        collectionView!.collectionViewLayout = layout
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         for _ in 0...31 {
@@ -119,6 +108,28 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewDidLayoutSubviews() {
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let screenSize = UIScreen.main.bounds
+        
+        layout.itemSize = CGSize(width:screenSize.width/2 , height:89)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView.layer.borderColor = UIColor.white.cgColor
+        collectionView.layer.borderWidth = 1
+        collectionView!.collectionViewLayout = layout
+        collectionView.reloadData()
+    }
+    @IBAction func didTapPrevious(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didTapNext(_ sender: Any) {
+    }
+    
+    
     
 
 }
