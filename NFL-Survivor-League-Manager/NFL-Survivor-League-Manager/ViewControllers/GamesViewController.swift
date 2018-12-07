@@ -175,5 +175,13 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             self.buttonState.append(false)
         }
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromPicksToOwnerManage" {
+            let dest = segue.destination as! UINavigationController
+            let vc = dest.topViewController as! OwnerDetailsViewController
+            vc.league = self.league
+        } else if segue.identifier == "fromPicksToHub" {
+            
+        }
+    }
 }

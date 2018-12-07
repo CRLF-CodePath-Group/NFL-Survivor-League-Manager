@@ -49,6 +49,7 @@ class League : PFObject, PFSubclassing{
     }
     func didUserPick(_ team: Team) -> Bool{
         let picks = self.picks[(PFUser.current()?.objectId)!]
+
         for pick in picks! {
             if pick == team.rawValue {
                 return true

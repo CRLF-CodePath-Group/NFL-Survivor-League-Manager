@@ -24,10 +24,16 @@ class OwnerDetailsViewController: UIViewController {
     @IBAction func didTapMakeMyPick(_ sender: Any) {
         performSegue(withIdentifier: "makeMyPickSegue", sender: nil)
     }
+
+    @IBAction func didTapGoBackToHUb(_ sender: Any) {
+        performSegue(withIdentifier: "backToHubSegue", sender: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "makeMyPickSegue" {
-            
+            let destination = segue.destination as! UINavigationController
+            let vc = destination.topViewController as! GamesViewController
+            vc.league = self.league
         }
     }
     

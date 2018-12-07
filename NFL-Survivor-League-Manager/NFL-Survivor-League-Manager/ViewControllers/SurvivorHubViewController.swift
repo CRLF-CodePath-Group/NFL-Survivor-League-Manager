@@ -20,9 +20,9 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
         self.leagueTableView.dataSource = self
         getUserLeagues()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadTableViews"), object: nil)
-        ParseAPIManager.fetchInvitesForUser { (success) in
+        //ParseAPIManager.fetchInvitesForUser { (success) in
    
-        }
+        //}
         self.leagueTableView.layer.borderColor = UIColor.white.cgColor
         self.leagueTableView.layer.borderWidth = 2
         // Do any additional setup after loading the view.
@@ -98,7 +98,6 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             self.leagueToSend = self.leagues[indexPath.row]
             performSegue(withIdentifier: "toGamePickerView", sender: nil)
-            
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
