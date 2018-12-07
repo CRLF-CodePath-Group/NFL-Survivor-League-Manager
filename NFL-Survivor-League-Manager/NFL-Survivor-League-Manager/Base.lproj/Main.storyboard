@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2pH-bL-ruk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,37 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Second Launch Screen View Controller-->
+        <scene sceneID="DN5-Jw-f2z">
+            <objects>
+                <viewController id="2pH-bL-ruk" customClass="SecondLaunchScreenViewController" customModule="NFL_Survivor_League_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HUH-d9-dEv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="nflSurvivorIcon.whiteOutline" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-Mk-x9j">
+                                <rect key="frame" x="98" y="228" width="178" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="t3e-TZ-O0c"/>
+                                    <constraint firstAttribute="width" constant="178" id="vvn-47-90f"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="0bb-Mk-x9j" firstAttribute="centerX" secondItem="HUH-d9-dEv" secondAttribute="centerX" id="AOd-aR-occ"/>
+                            <constraint firstItem="0bb-Mk-x9j" firstAttribute="centerY" secondItem="HUH-d9-dEv" secondAttribute="centerY" id="Pci-Hw-MDw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xoy-wl-9JD"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMainPage" id="hfs-tK-Tef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="el3-Wt-dgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-806" y="132"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1021,5 +1052,6 @@
         <segue reference="UGl-rN-g68"/>
         <segue reference="e6q-0f-MTE"/>
         <segue reference="y1j-Ji-uXA"/>
+        <segue reference="hfs-tK-Tef"/>
     </inferredMetricsTieBreakers>
 </document>

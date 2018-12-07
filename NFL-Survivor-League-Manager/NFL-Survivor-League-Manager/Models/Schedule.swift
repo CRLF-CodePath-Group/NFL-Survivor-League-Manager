@@ -7,11 +7,14 @@
 //
 
 import Foundation
-
+import  UIKit
 
 
 class Schedule {
     var games = [[Game]]()
+    init() {
+        self.games = [[Game]]()
+    }
     init(_ gameDictionaryArray: [[String: Any]]) {
         for _ in 0...16 {
             let test = [Game]()
@@ -23,3 +26,4 @@ class Schedule {
         }
     }
 }
+
