@@ -44,31 +44,40 @@ class League : PFObject, PFSubclassing{
         if !doesContain {
             self.aliveMembers.append(memmberId)
             self.picks[memmberId] = [String]()
+            for _ in 0...16 {
+                self.picks[memmberId]?.append(Team.NIL.rawValue)
+            }
         }
         self.saveInBackground()
     }
-    func didUserPick(_ team: Team) -> Bool{
-        let picks = self.picks[(PFUser.current()?.objectId)!]
-
-        for pick in picks! {
-            if pick == team.rawValue {
+    func didUserPick(_ team: Team, _ current: Int) -> Bool{
+        let pick = self.picks[(PFUser.current()?.objectId)!]
+        if team == Team.NIL {
+            return false
+        }
+        for i in 0...(pick?.count)!-1 {
+            if pick![i] == team.rawValue && i != current {
                 return true
             }
         }
         return false
     }
-    func addUserPick(_ team: Team/*, _ id: String*/)
-    {
-        let user = PFUser.current()?.objectId
-        var picks = self.picks[user!]
-        for pick in picks!
-        {
-            if pick == team.rawValue
-            {
-                picks?.append(team.rawValue)
-            }
+    func didPickForSpecificWeek(_ team: Team, _ current: Int) -> Bool {
+        let pick = self.picks[(PFUser.current()?.objectId)!]!
+        if pick[current] == team.rawValue {
+            return true
         }
+        return false
         
+    }
+    func addUserPick(_ team: Team, _ current: Int) {
+        let userId = PFUser.current()?.objectId
+        var pick = self.picks[userId!]!
+        if team != Team.NIL {
+            pick[current] = team.rawValue
+            self.picks[userId!]! = pick
+        }
+        self.saveInBackground()
     }
     static func parseClassName() -> String {
         return "League"

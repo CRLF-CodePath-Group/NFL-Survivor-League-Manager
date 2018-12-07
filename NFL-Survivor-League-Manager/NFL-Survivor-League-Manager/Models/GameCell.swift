@@ -25,17 +25,20 @@ class GameCell: UICollectionViewCell {
     var cellNumber : Int?
     var indexPath : IndexPath?
     var league = League()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+        self.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
         
     }
     @IBAction func didTapAwayRadioButton(_ sender: UIButton) {
-        let picks = league.picks[(PFUser.current()?.username)!]
         
         if awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
             let cellIdNum = 2 * self.cellNumber!
+            let team = Team.getTeamByName(self.awayTeamLabel.text!)
+            league.addUserPick(team, (delegate?.getCurrentWeekDisplayed())!)
             self.delegate?.updateRadios(cellIdNum, false, Team.getTeamByName(awayTeamLabel.text!))
         }
     }
@@ -44,6 +47,8 @@ class GameCell: UICollectionViewCell {
         if homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
             let cellIdNum = (2 * self.cellNumber!) + 1
+            let team = Team.getTeamByName(self.homeTeamLabel.text!)
+            league.addUserPick(team, (delegate?.getCurrentWeekDisplayed())!)
             self.delegate?.updateRadios(cellIdNum, true, Team.getTeamByName((homeTeamLabel.text)!))
         }
     }

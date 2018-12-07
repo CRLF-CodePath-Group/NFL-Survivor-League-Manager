@@ -13,6 +13,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     var buttonState = [Bool]()
     var league = League()
     var currentWeekDisplayed = 0
+    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var weekNumLabel: UILabel!
@@ -29,13 +30,15 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
 
         
         self.currentWeekDisplayed = self.league.currentWeek - 1
+        
         if self.currentWeekDisplayed == 0 {
             self.previousButton.isHidden = true
         }
         if self.currentWeekDisplayed == 16 {
             self.nextButton.isHidden = true
         }
-        //self.title = self.league.leagueName
+        self.title = self.league.leagueName
+        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,10 +51,9 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
-        //let game = games[indexPath.item]
         cell.delegate = self
-        cell.awayTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.item].awayTeam.rawValue
-        cell.homeTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.item].homeTeam.rawValue
+        cell.awayTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam.rawValue
+        cell.homeTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam.rawValue
         let awayImage = UIImage(imageLiteralResourceName: "\(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam.rawValue)")
         let homeImage = UIImage(imageLiteralResourceName: "\(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam.rawValue)")
         cell.cellNumber = indexPath.row
@@ -62,32 +64,39 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         cell.league = self.league
         let odd = (cell.cellNumber! * 2) + 1
         let even = (cell.cellNumber! * 2)
-        if self.league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam) {
+        if league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam, self.currentWeekDisplayed) {
             cell.awayTeamRadioButton.isHidden = true
         } else {
-            if even % 2 == 0 && self.buttonState[even] == true {
+            if ((even % 2 == 0 && self.buttonState[even] == true) || league.didPickForSpecificWeek(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam, self.currentWeekDisplayed)) {
                 cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+                cell.awayTeamRadioButton.isHidden = false
             } else {
                 cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                cell.awayTeamRadioButton.isHidden = false
             }
         }
-        if self.league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam) {
+        if league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam, self.currentWeekDisplayed) {
             cell.homeTeamRadioButon.isHidden = true
         } else {
-            if odd % 2 == 1 && self.buttonState[odd] == true {
+            if ((odd % 2 == 1 && self.buttonState[odd] == true) || league.didPickForSpecificWeek(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam, self.currentWeekDisplayed)) {
                 cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+                cell.homeTeamRadioButon.isHidden = false
             } else {
                 cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                cell.homeTeamRadioButon.isHidden = false
             }
         }
+
+
         return cell
     }
     
     func updateRadios(_ num: Int, _ isHomeTeam: Bool, _ team: Team) {
-        
+
         for i in 0...self.buttonState.count-1 {
             if i != num  && self.buttonState[i] == true {
                 self.buttonState[i] = false
+                
                 var cellIdNum = Int()
                 var isHomeTeam = Bool()
                 if i % 2 == 0 {
@@ -100,16 +109,20 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
                 for cell in collectionView.visibleCells as! [GameCell] {
                     if cell.cellNumber! == cellIdNum{
                         if isHomeTeam {
+                            //league.addUserPick(team, self.currentWeekDisplayed)
                             cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
                         }else {
+                            //league.addUserPick(team, self.currentWeekDisplayed)
+
                             cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
                         }
                     }
                 }
             }
         }
-        self.buttonState[num] = true
         
+        self.buttonState[num] = true
+        self.collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,6 +144,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         collectionView.reloadData()
     }
     @IBAction func didTapPrevious(_ sender: Any) {
+        league.addUserPick(self.getTeamThatWasPicked(), self.currentWeekDisplayed)
         if self.currentWeekDisplayed > 0 {
             self.currentWeekDisplayed -= 1
             self.resetAllButtons()
@@ -146,6 +160,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     }
     
     @IBAction func didTapNext(_ sender: Any) {
+        league.addUserPick(self.getTeamThatWasPicked(), self.currentWeekDisplayed)
         if self.currentWeekDisplayed < 16 {
             self.currentWeekDisplayed += 1
             self.resetAllButtons()
@@ -158,7 +173,18 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         }
         self.collectionView.reloadData()
     }
-    
+    func getTeamThatWasPicked() -> Team {
+        for i in 0...self.buttonState.count-1 {
+            if self.buttonState[i] == true {
+                if i % 2 == 0 {
+                    return NFLSchedule.games[self.currentWeekDisplayed][i/2].awayTeam
+                } else {
+                    return NFLSchedule.games[self.currentWeekDisplayed][(i-1)/2].homeTeam
+                }
+            }
+        }
+        return Team.NIL
+    }
     func getCurrentWeekDisplayed() -> Int {
         return self.currentWeekDisplayed
     }
@@ -175,6 +201,10 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             self.buttonState.append(false)
         }
     }
+    func setCellProperties(_ cell: GameCell, _ indexPathRow: Int) -> GameCell {
+
+        return cell
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromPicksToOwnerManage" {
             let dest = segue.destination as! UINavigationController
@@ -184,4 +214,5 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             
         }
     }
+    
 }
