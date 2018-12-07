@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+
 enum Team: String{
     //NFC SOUTH
     case ATLANTA = "Falcons"; case PANTHERS = "Panthers"; case SAINTS = "Saints"; case BUCCANEERS = "Buccaneers"
@@ -70,6 +71,41 @@ enum Team: String{
         if abb == "CLE" { return Team.BROWNS       }
         if abb == "PIT" { return Team.STEELERS     }
         if abb == "CIN" { return Team.BENGALS      }
+        return Team.NIL
+    }
+    static func getTeamByName(_ name : String) -> Team{
+        if name == "Falcons" { return Team.ATLANTA      }
+        if name == "Panthers" { return Team.PANTHERS     }
+        if name == "Saints"  { return Team.SAINTS       }
+        if name == "Buccaneers"  { return Team.BUCCANEERS   }
+        if name == "Packers"  { return Team.PACKERS      }
+        if name == "Lions" { return Team.LIONS        }
+        if name == "Vikings" { return Team.VIKINGS      }
+        if name == "Bears" { return Team.BEARS        }
+        if name == "49ers"  { return Team.FORTY_NINERS }
+        if name == "Rams"  { return Team.RAMS         }
+        if name == "Seahawks" { return Team.SEAHAWKS     }
+        if name == "Cardinals" { return Team.CARDINALS    }
+        if name == "Redskins" { return Team.REDSKINS     }
+        if name == "Eagles" { return Team.EAGLES       }
+        if name == "Giants" { return Team.GIANTS       }
+        if name == "Cowboys" { return Team.COWBOYS      }
+        if name == "Patriots"  { return Team.PATRIOTS     }
+        if name == "Jets" { return Team.JETS         }
+        if name == "Bills" { return Team.BILLS        }
+        if name == "Dolphins" { return Team.DOLPHINS     }
+        if name == "Broncos" { return Team.BRONCOS      }
+        if name == "Raiders" { return Team.RAIDERS      }
+        if name == "Chiefs"  { return Team.CHIEFS       }
+        if name == "Chargers" { return Team.CHARGERS     }
+        if name == "Texans" { return Team.TEXANS       }
+        if name == "Jaguars" { return Team.JAGUARS      }
+        if name == "Colts" { return Team.COLTS        }
+        if name == "Titans" { return Team.TITANS       }
+        if name == "Ravens" { return Team.RAVENS       }
+        if name == "Browns" { return Team.BROWNS       }
+        if name == "Steelers" { return Team.STEELERS     }
+        if name == "Bengals" { return Team.BENGALS      }
         return Team.NIL
     }
 }

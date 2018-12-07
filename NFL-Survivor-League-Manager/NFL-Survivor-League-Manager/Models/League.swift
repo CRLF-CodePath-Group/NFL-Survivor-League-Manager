@@ -43,8 +43,18 @@ class League : PFObject, PFSubclassing{
         }
         if !doesContain {
             self.aliveMembers.append(memmberId)
+            self.picks[memmberId] = [String]()
         }
         self.saveInBackground()
+    }
+    func didUserPick(_ team: Team) -> Bool{
+        let picks = self.picks[(PFUser.current()?.objectId)!]
+        for pick in picks! {
+            if pick == team.rawValue {
+                return true
+            }
+        }
+        return false
     }
     static func parseClassName() -> String {
         return "League"

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate {
     var schedule : Schedule!
@@ -16,22 +17,17 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var weekNumLabel: UILabel!
-    
-    @IBOutlet weak var leagueNameLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var awayTeamLogoImageView: UIImageView!
     @IBOutlet weak var homeTeamLogoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.resetAllButtons()
         
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
-        for _ in 0...31 {
-            self.buttonState.append(false)
-        }
+
         NFLAPIManager.grabFullNFLSeason { (schedule, error) in
             if let schedule = schedule {
                 self.schedule = schedule
@@ -48,6 +44,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         if self.currentWeekDisplayed == 16 {
             self.nextButton.isHidden = true
         }
+        //self.title = self.league.leagueName
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,22 +68,31 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         cell.layer.borderWidth = 1
         cell.awayTeamLogoImageView.image = awayImage
         cell.homeTeamLogoImageView.image = homeImage
+        cell.league = self.league
         let odd = (cell.cellNumber! * 2) + 1
         let even = (cell.cellNumber! * 2)
-        if even % 2 == 0 && self.buttonState[even] == true {
-            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+        if self.league.didUserPick(schedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam) {
+            cell.awayTeamRadioButton.isHidden = true
         } else {
-            cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            if even % 2 == 0 && self.buttonState[even] == true {
+                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+            } else {
+                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            }
         }
-        if odd % 2 == 1 && self.buttonState[odd] == true {
-            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+        if self.league.didUserPick(schedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam) {
+            cell.homeTeamRadioButon.isHidden = true
         } else {
-            cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            if odd % 2 == 1 && self.buttonState[odd] == true {
+                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+            } else {
+                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+            }
         }
         return cell
     }
     
-    func updateRadios(_ num: Int, _ isHomeTeam: Bool) {
+    func updateRadios(_ num: Int, _ isHomeTeam: Bool, _ team: Team) {
         for i in 0...self.buttonState.count-1 {
             if i != num  && self.buttonState[i] == true {
                 self.buttonState[i] = false
@@ -134,6 +140,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     @IBAction func didTapPrevious(_ sender: Any) {
         if self.currentWeekDisplayed > 0 {
             self.currentWeekDisplayed -= 1
+            self.resetAllButtons()
             if self.currentWeekDisplayed == 0 {
                 self.previousButton.isHidden = true
                 
@@ -148,6 +155,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     @IBAction func didTapNext(_ sender: Any) {
         if self.currentWeekDisplayed < 16 {
             self.currentWeekDisplayed += 1
+            self.resetAllButtons()
             if self.currentWeekDisplayed == 16 {
                 self.nextButton.isHidden = true
             }
@@ -158,7 +166,21 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         self.collectionView.reloadData()
     }
     
-    
-    
+    func getCurrentWeekDisplayed() -> Int {
+        return self.currentWeekDisplayed
+    }
+    @IBAction func didTapBack(_ sender: Any) {
+        if self.league.owner == PFUser.current()?.username {
+            performSegue(withIdentifier: "fromPicksToOwnerManage", sender: nil)
+        } else {
+            performSegue(withIdentifier: "fromPicksToHub", sender: nil)
+        }
+    }
+    func resetAllButtons() {
+        self.buttonState = [Bool]()
+        for _ in 0...31 {
+            self.buttonState.append(false)
+        }
+    }
 
 }

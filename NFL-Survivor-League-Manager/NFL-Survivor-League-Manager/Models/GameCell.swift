@@ -7,9 +7,10 @@
 //
 
 import UIKit
-
+import Parse
 protocol  GameCellDelegate : class {
-    func updateRadios(_ num: Int, _ isHomeTeam: Bool)
+    func updateRadios(_ num: Int, _ isHomeTeam: Bool, _ teamPicked: Team)
+    func getCurrentWeekDisplayed() -> Int
 }
 
 class GameCell: UICollectionViewCell {
@@ -23,12 +24,19 @@ class GameCell: UICollectionViewCell {
     weak var delegate : GameCellDelegate?
     var cellNumber : Int?
     var indexPath : IndexPath?
+    var league = League()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
     @IBAction func didTapAwayRadioButton(_ sender: UIButton) {
+        let picks = league.picks[(PFUser.current()?.username)!]
+        
         if awayTeamRadioButton.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
             let cellIdNum = 2 * self.cellNumber!
-            self.delegate?.updateRadios(cellIdNum, false)
+            self.delegate?.updateRadios(cellIdNum, false, Team.getTeamByName(awayTeamLabel.text!))
         }
     }
     
@@ -36,7 +44,7 @@ class GameCell: UICollectionViewCell {
         if homeTeamRadioButon.currentImage == #imageLiteral(resourceName: "Radio Button.png") {
             homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
             let cellIdNum = (2 * self.cellNumber!) + 1
-            self.delegate?.updateRadios(cellIdNum, true)
+            self.delegate?.updateRadios(cellIdNum, true, Team.getTeamByName((homeTeamLabel.text)!))
         }
     }
 

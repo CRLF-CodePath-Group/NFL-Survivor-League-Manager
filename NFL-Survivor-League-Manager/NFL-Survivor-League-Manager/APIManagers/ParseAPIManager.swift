@@ -41,6 +41,7 @@ class ParseAPIManager {
         league.saveInBackground() {
             (success, error) in
             if success {
+                league.addAliveMember((PFUser.current()?.objectId)!)
                 completion(league, nil)
             } else if let error = error {
                 print(error.localizedDescription)

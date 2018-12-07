@@ -21,6 +21,15 @@ class OwnerDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func didTapMakeMyPick(_ sender: Any) {
+        performSegue(withIdentifier: "makeMyPickSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "makeMyPickSegue" {
+            
+        }
+    }
+    
 
 }
