@@ -794,7 +794,11 @@
                         <viewLayoutGuide key="safeArea" id="Ylb-LL-gGd"/>
                     </view>
                     <navigationItem key="navigationItem" id="UhM-7c-C9O">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="a7S-dx-cVY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="a7S-dx-cVY">
+                            <connections>
+                                <action selector="didTapGoBackToHUb:" destination="u4K-rF-X66" id="IVD-FS-kxQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="WON-wJ-S7S" kind="presentation" identifier="makeMyPickSegue" id="e6q-0f-MTE"/>
