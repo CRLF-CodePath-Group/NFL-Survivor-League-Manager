@@ -10,7 +10,6 @@ import UIKit
 import Parse
 
 class GamesViewController: UIViewController, UICollectionViewDataSource, GameCellDelegate {
-    var schedule : Schedule!
     var buttonState = [Bool]()
     var league = League()
     var currentWeekDisplayed = 0
@@ -28,14 +27,6 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
 
-        NFLAPIManager.grabFullNFLSeason { (schedule, error) in
-            if let schedule = schedule {
-                self.schedule = schedule
-                self.collectionView.reloadData()
-            } else if let error = error {
-                print(error.localizedDescription)
-            }
-        }
         
         self.currentWeekDisplayed = self.league.currentWeek - 1
         if self.currentWeekDisplayed == 0 {
@@ -48,8 +39,8 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if schedule != nil {
-            return schedule.games[self.currentWeekDisplayed].count
+        if NFLSchedule != nil {
+            return NFLSchedule.games[self.currentWeekDisplayed].count
         } else {
             return 0
         }
@@ -59,10 +50,10 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         //let game = games[indexPath.item]
         cell.delegate = self
-        cell.awayTeamLabel.text = schedule.games[self.currentWeekDisplayed][indexPath.item].awayTeam.rawValue
-        cell.homeTeamLabel.text = schedule.games[self.currentWeekDisplayed][indexPath.item].homeTeam.rawValue
-        let awayImage = UIImage(imageLiteralResourceName: "\(schedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam.rawValue)")
-        let homeImage = UIImage(imageLiteralResourceName: "\(schedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam.rawValue)")
+        cell.awayTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.item].awayTeam.rawValue
+        cell.homeTeamLabel.text = NFLSchedule.games[self.currentWeekDisplayed][indexPath.item].homeTeam.rawValue
+        let awayImage = UIImage(imageLiteralResourceName: "\(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam.rawValue)")
+        let homeImage = UIImage(imageLiteralResourceName: "\(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam.rawValue)")
         cell.cellNumber = indexPath.row
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
@@ -71,7 +62,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         cell.league = self.league
         let odd = (cell.cellNumber! * 2) + 1
         let even = (cell.cellNumber! * 2)
-        if self.league.didUserPick(schedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam) {
+        if self.league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam) {
             cell.awayTeamRadioButton.isHidden = true
         } else {
             if even % 2 == 0 && self.buttonState[even] == true {
@@ -80,7 +71,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
                 cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
             }
         }
-        if self.league.didUserPick(schedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam) {
+        if self.league.didUserPick(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam) {
             cell.homeTeamRadioButon.isHidden = true
         } else {
             if odd % 2 == 1 && self.buttonState[odd] == true {
@@ -93,6 +84,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     }
     
     func updateRadios(_ num: Int, _ isHomeTeam: Bool, _ team: Team) {
+        
         for i in 0...self.buttonState.count-1 {
             if i != num  && self.buttonState[i] == true {
                 self.buttonState[i] = false
@@ -117,6 +109,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             }
         }
         self.buttonState[num] = true
+        
     }
     
     override func didReceiveMemoryWarning() {
