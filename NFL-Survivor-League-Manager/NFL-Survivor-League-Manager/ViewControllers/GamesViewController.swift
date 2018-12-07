@@ -93,6 +93,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     }
     
     func updateRadios(_ num: Int, _ isHomeTeam: Bool, _ team: Team) {
+        
         for i in 0...self.buttonState.count-1 {
             if i != num  && self.buttonState[i] == true {
                 self.buttonState[i] = false
@@ -117,6 +118,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             }
         }
         self.buttonState[num] = true
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -56,6 +56,19 @@ class League : PFObject, PFSubclassing{
         }
         return false
     }
+    func addUserPick(_ team: Team/*, _ id: String*/)
+    {
+        let user = PFUser.current()?.objectId
+        var picks = self.picks[user!]
+        for pick in picks!
+        {
+            if pick == team.rawValue
+            {
+                picks?.append(team.rawValue)
+            }
+        }
+        
+    }
     static func parseClassName() -> String {
         return "League"
     }
