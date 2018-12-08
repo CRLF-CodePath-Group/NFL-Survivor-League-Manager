@@ -76,6 +76,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
+Presentation- https://docs.google.com/presentation/d/1ncGPEAa7lFa4RQIdodM2gOsgh5fjbd5Ne8Hh1OXrUaQ/edit#slide=id.g49b60637ff_3_32
+
 Describe any challenges encountered while building the app.
 
 ## License
