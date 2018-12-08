@@ -65,7 +65,7 @@ Here's a walkthrough of implemented user stories:
 
 **Creation of league and inviting users**
 
-![](https://github.com/CRLF-CodePath-Group/NFL-Survior-League-Manager/blob/master/Demos/nflSurvivorLeagueCreateAndInviteDemo.gif)
+![](https://github.com/CRLF-CodePath-Group/NFL-Survior-League-Manager/blob/master/Demos/nflSurvivorCreateLeague.gif)
 
 
 **Inviting, Picking and managing league**
