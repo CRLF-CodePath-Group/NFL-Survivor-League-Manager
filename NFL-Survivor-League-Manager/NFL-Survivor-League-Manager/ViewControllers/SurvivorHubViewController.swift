@@ -94,10 +94,22 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
        
         if self.leagues[indexPath.row].owner == PFUser.current()?.username {
             self.leagueToSend = self.leagues[indexPath.row]
-            performSegue(withIdentifier: "toOwnedLeagueView", sender: nil)
+            ParseAPIManager.getLeagueById([self.leagueToSend.objectId!]) { (leaguesU, error) in
+                if let leaguesX = leaguesU {
+                    self.leagueToSend = leaguesX[0]
+                    self.performSegue(withIdentifier: "toOwnedLeagueView", sender: nil)
+                }
+            }
+            
         } else {
             self.leagueToSend = self.leagues[indexPath.row]
-            performSegue(withIdentifier: "toGamePickerView", sender: nil)
+            ParseAPIManager.getLeagueById([self.leagueToSend.objectId!]) { (leaguesU, error) in
+                if let leaguesX = leaguesU {
+                    self.leagueToSend = leaguesX[0]
+                    self.performSegue(withIdentifier: "toGamePickerView", sender: nil)
+                }
+            }
+            
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

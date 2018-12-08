@@ -35,7 +35,17 @@ class OwnerDetailsViewController: UIViewController, UITableViewDelegate, UITable
                 self.tableView.reloadData()
             }
         }
-        self.tableView.reloadData()
+        ParseAPIManager.getLeagueById([self.league.objectId!]) { (leagues, error) in
+            if let leagues = leagues {
+                self.league = leagues[0]
+                usleep(400000)
+                self.currentWeekNumLabel.text = "\(self.league.currentWeek)"
+                self.playersLeftNumLabel.text = "\(self.league.aliveMembers.count)"
+                self.league.saveInBackground()
+                self.tableView.reloadData()
+            }
+        }
+
         // Do any additional setup after loading the view.
     }
 
@@ -67,10 +77,10 @@ class OwnerDetailsViewController: UIViewController, UITableViewDelegate, UITable
                 usleep(400000)
                 self.currentWeekNumLabel.text = "\(self.league.currentWeek)"
                 self.playersLeftNumLabel.text = "\(self.league.aliveMembers.count)"
+                self.league.saveInBackground()
                 self.tableView.reloadData()
             }
         }
-        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leagueMembers.count
@@ -85,5 +95,8 @@ class OwnerDetailsViewController: UIViewController, UITableViewDelegate, UITable
             cell.playerStatusLabel.text = "Status: Dead"
         }
         return cell
+    }
+    func updateLeague() {
+
     }
 }
