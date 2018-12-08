@@ -58,7 +58,10 @@ This project also gathers NFL data provided by [MySportsFeeds](https://www.myspo
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+**Inviting, Picking and managing league**
+
+![](https://github.com/CRLF-CodePath-Group/NFL-Survior-League-Manager/blob/master/Demos/nflSurvivorLeaguePickingDemo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
