@@ -58,6 +58,15 @@ This project also gathers NFL data provided by [MySportsFeeds](https://www.myspo
 
 Here's a walkthrough of implemented user stories:
 
+**Log In and Sign Up**
+
+![](https://github.com/CRLF-CodePath-Group/NFL-Survior-League-Manager/blob/master/Demos/nflSurviviorLogInSIgnUpDemo.gif)
+
+
+**Creation of league and inviting users**
+
+![](https://github.com/CRLF-CodePath-Group/NFL-Survior-League-Manager/blob/master/Demos/nflSurvivorLeagueCreateAndInviteDemo.gif)
+
 
 **Inviting, Picking and managing league**
 
