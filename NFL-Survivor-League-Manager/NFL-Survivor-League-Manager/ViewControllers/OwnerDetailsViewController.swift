@@ -9,11 +9,33 @@
 import UIKit
 import Parse
 
-class OwnerDetailsViewController: UIViewController {
-    var league = League()
+class OwnerDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var leagueMembers = [User]()
+    var league = League() {
+        didSet {
+            self.title = league.leagueName
+            
+        }
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var currentWeekNumLabel: UILabel!
+    @IBOutlet weak var playersLeftNumLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = league.leagueName
+        //self.title = league.leagueName
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.currentWeekNumLabel.text = "\(self.league.currentWeek)"
+        self.playersLeftNumLabel.text = "\(self.league.aliveMembers.count)"
+        ParseAPIManager.fetchMultipleUsersByObjectId(self.league.aliveMembers + self.league.deadMembers) { (users, error) in
+            if let users = users {
+                self.leagueMembers = users
+                self.tableView.reloadData()
+            }
+        }
+        self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -37,5 +59,31 @@ class OwnerDetailsViewController: UIViewController {
         }
     }
     
-
+    @IBAction func didTapAdvanceWeek(_ sender: Any) {
+        ParseAPIManager.getLeagueById([self.league.objectId!]) { (leagues, error) in
+            if let leagues = leagues {
+                self.league = leagues[0]
+                self.league.moveWeekForward()
+                usleep(400000)
+                self.currentWeekNumLabel.text = "\(self.league.currentWeek)"
+                self.playersLeftNumLabel.text = "\(self.league.aliveMembers.count)"
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return leagueMembers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "PlayerInfoCell", for: indexPath) as! PlayerInfoCell
+        cell.playerNameLabel.text = self.leagueMembers[indexPath.row].username
+        if self.league.isUserAlive(self.leagueMembers[indexPath.row].objectId!) {
+            cell.playerStatusLabel.text = "Status: Alive"
+        } else {
+            cell.playerStatusLabel.text = "Status: Dead"
+        }
+        return cell
+    }
 }

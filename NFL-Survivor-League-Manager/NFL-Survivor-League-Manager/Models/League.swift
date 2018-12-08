@@ -79,6 +79,69 @@ class League : PFObject, PFSubclassing{
         }
         self.saveInBackground()
     }
+    func getUserPickWeek(_ team: Team) -> Int {
+        let pick = self.picks[(PFUser.current()?.objectId)!]
+        for i in 0...(pick?.count)!-1 {
+            if pick![i] == team.rawValue {
+                return i + 1
+            }
+        }
+        return -1
+    }
+    func isUserAlive(_ userID: String) -> Bool {
+        for s in self.aliveMembers {
+            if s == userID {
+                return true
+            }
+        }
+        return false
+    }
+    func moveWeekForward() {
+        let games = NFLSchedule.games[self.currentWeek - 1]
+
+        var usersToEliminate = [String]()
+        for user in self.aliveMembers {
+            let pick = self.picks[user]![self.currentWeek-1]
+            var didSurvive = false
+            
+            for game in games {
+                
+                if game.winner().rawValue == pick && pick != Team.NIL.rawValue {
+                    didSurvive = true
+                }
+            }
+            if !didSurvive {
+                usersToEliminate.append(user)
+            }
+        }
+        for s in usersToEliminate {
+            self.userEliminated(s)
+        }
+        self.currentWeek+=1
+        self.saveInBackground()
+    }
+    func userEliminated(_ userId: String) {
+        var index = -1
+        for i in 0...self.aliveMembers.count-1  {
+            if self.aliveMembers[i] == userId {
+                index = i
+                break
+            }
+        }
+        if index != -1 {
+            self.aliveMembers.remove(at: index)
+            self.deadMembers.append(userId)
+        }
+       
+    }
+    func isWinner(_ objectId: String) -> Bool {
+        if self.aliveMembers.count == 1 && self.currentWeek != 1{
+            if self.aliveMembers[0] == objectId {
+                return true
+            }
+        }
+        return false
+    }
     static func parseClassName() -> String {
         return "League"
     }

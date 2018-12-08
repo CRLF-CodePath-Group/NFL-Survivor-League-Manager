@@ -5,7 +5,6 @@
 //  Created by Jacob Frick on 11/25/18.
 //  Copyright © 2018 Jacob Frick. All rights reserved.
 //
-
 import Foundation
 import Parse
 
@@ -87,7 +86,7 @@ class ParseAPIManager {
     static func sendUsersInvites(_ users: [User], _ league: League) {
         var userObjectIds = [String]()
         for user in users {
-          userObjectIds.append(user.objectId!)
+            userObjectIds.append(user.objectId!)
         }
         let invite = LeagueInvite(league.objectId!, league.leagueName, league.owner, userObjectIds)
         invite.saveInBackground()
@@ -124,5 +123,17 @@ class ParseAPIManager {
         })
         PFUser.current()?.saveInBackground()
         completion(true)
+    }
+    static func fetchMultipleUsersByObjectId(_ userIds: [String], completion: @escaping([User]?, Error?)->()) {
+        let query = PFUser.query()
+        query?.whereKey("objectId", containedIn: userIds)
+        query?.findObjectsInBackground(block: { (userObjects, error) in
+            if let users = userObjects {
+                completion(users as? [User], nil)
+            } else if let error = error {
+                completion(nil, error)
+                print(error.localizedDescription)
+            }
+        })
     }
 }

@@ -43,6 +43,7 @@ class InvitesViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+
     func fetchLeagues() {
         let user = PFUser.current() as! User
         ParseAPIManager.getLeagueById(user.invites) { (leagues, error) in

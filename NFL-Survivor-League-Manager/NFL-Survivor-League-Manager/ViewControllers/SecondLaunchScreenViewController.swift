@@ -32,6 +32,3 @@ class SecondLaunchScreenViewController: UIViewController {
    
 
 }
-extension UIViewController {
-    
-}

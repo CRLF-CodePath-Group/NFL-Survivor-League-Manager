@@ -33,6 +33,7 @@ class InviteCell: UITableViewCell {
     @IBAction func didTapAccept(_ sender: Any) {
         let user = PFUser.current() as! User
         user.addLeague((league?.objectId)!)
+        user.removeInvite((league?.objectId)!)
         league?.addAliveMember(user.objectId!)
         delegate?.removeCell(self.indexPath!)
     }

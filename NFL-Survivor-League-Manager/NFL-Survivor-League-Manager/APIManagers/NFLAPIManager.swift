@@ -23,7 +23,7 @@ class NFLAPIManager {
         let base64Password = base64Pass!
         //print(base64Password)
         let url = URL(string: NFLAPIManager.baseURL)!
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 10)
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: base64Password))"]
         let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)

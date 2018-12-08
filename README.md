@@ -14,12 +14,12 @@ Time spent: **X** hours spent in total
 ## User Stories
 
 The following **required** functionality is completed:
-- [ ] New users can create an account or existing users can return and log back in.
-- [ ] User is brought to main hub that they can see: leagues they are in, leagues they manage, and a button to create a new league
-- [ ] Users can create their own league
-- [ ] Users can invite others to join their league
-- [ ] Users can view details of leagues they are in, and select their picks for the week(but cannot see others picks)
-- [ ] Managers screen can make their pick, and see stats on which teams were picked and who still needs to pick
+- [X] New users can create an account or existing users can return and log back in.
+- [X] User is brought to main hub that they can see: leagues they are in, leagues they manage, and a button to create a new league
+- [X] Users can create their own league
+- [X] Users can invite others to join their league
+- [X] Users can view details of leagues they are in, and select their picks for the week(but cannot see others picks)
+- [X] Managers screen can make their pick and view status of other users (alive/dead)
 - [X] Set up NFL API to automatically get NFL schedule and W/L for each week.
 
 The following **stretch** features are implemented:

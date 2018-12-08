@@ -14,6 +14,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
     var league = League()
     var currentWeekDisplayed = 0
     
+    @IBOutlet weak var playersLeftLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var weekNumLabel: UILabel!
@@ -26,19 +27,24 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         self.resetAllButtons()
         
         // Do any additional setup after loading the view.
-        collectionView.dataSource = self
-
-        
-        self.currentWeekDisplayed = self.league.currentWeek - 1
-        
-        if self.currentWeekDisplayed == 0 {
-            self.previousButton.isHidden = true
+        if !self.league.isUserAlive((PFUser.current()?.objectId)!) {
+            self.manageWinOrEliminated("You were eliminated!")
+        } else if self.league.isWinner((PFUser.current()?.objectId)!) {
+            self.manageWinOrEliminated("You are the winner!")
+        } else {
+            collectionView.dataSource = self
+            self.currentWeekDisplayed = self.league.currentWeek - 1
+            if self.currentWeekDisplayed == 0 {
+                self.previousButton.isHidden = true
+            }
+            if self.currentWeekDisplayed == 16 {
+                self.nextButton.isHidden = true
+            }
+            self.playersLeftLabel.text = "Players Left: \(self.league.aliveMembers.count)"
+            self.weekNumLabel.text = "Week: \(self.currentWeekDisplayed + 1)"
+            self.title = self.league.leagueName
+            collectionView.reloadData()
         }
-        if self.currentWeekDisplayed == 16 {
-            self.nextButton.isHidden = true
-        }
-        self.title = self.league.leagueName
-        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,10 +74,14 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             cell.awayTeamRadioButton.isHidden = true
         } else {
             if ((even % 2 == 0 && self.buttonState[even] == true) || league.didPickForSpecificWeek(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].awayTeam, self.currentWeekDisplayed)) {
-                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
                 cell.awayTeamRadioButton.isHidden = false
+                cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
+                cell.awayTeamRadioButton.setTitle("", for: .normal)
+                cell.awayTeamRadioButton.backgroundColor = UIColor.white
             } else {
                 cell.awayTeamRadioButton.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                cell.awayTeamRadioButton.setTitle("", for: .normal)
+                cell.awayTeamRadioButton.backgroundColor = UIColor.white
                 cell.awayTeamRadioButton.isHidden = false
             }
         }
@@ -79,14 +89,17 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             cell.homeTeamRadioButon.isHidden = true
         } else {
             if ((odd % 2 == 1 && self.buttonState[odd] == true) || league.didPickForSpecificWeek(NFLSchedule.games[self.currentWeekDisplayed][indexPath.row].homeTeam, self.currentWeekDisplayed)) {
+                cell.homeTeamRadioButon.isHidden = false
                 cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button Fill.png"), for: .normal)
-                cell.homeTeamRadioButon.isHidden = false
+                cell.homeTeamRadioButon.setTitle("", for: .normal)
+                cell.homeTeamRadioButon.backgroundColor = UIColor.white
             } else {
-                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
                 cell.homeTeamRadioButon.isHidden = false
+                cell.homeTeamRadioButon.setImage(#imageLiteral(resourceName: "Radio Button.png"), for: .normal)
+                cell.homeTeamRadioButon.setTitle("", for: .normal)
+                cell.homeTeamRadioButon.backgroundColor = UIColor.white
             }
         }
-
 
         return cell
     }
@@ -147,6 +160,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         league.addUserPick(self.getTeamThatWasPicked(), self.currentWeekDisplayed)
         if self.currentWeekDisplayed > 0 {
             self.currentWeekDisplayed -= 1
+            self.weekNumLabel.text = "Week: \(self.currentWeekDisplayed + 1)"
             self.resetAllButtons()
             if self.currentWeekDisplayed == 0 {
                 self.previousButton.isHidden = true
@@ -156,6 +170,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         if self.currentWeekDisplayed < 16 {
             self.nextButton.isHidden = false
         }
+        
         self.collectionView.reloadData()
     }
     
@@ -163,6 +178,7 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
         league.addUserPick(self.getTeamThatWasPicked(), self.currentWeekDisplayed)
         if self.currentWeekDisplayed < 16 {
             self.currentWeekDisplayed += 1
+            self.weekNumLabel.text = "Week: \(self.currentWeekDisplayed + 1)"
             self.resetAllButtons()
             if self.currentWeekDisplayed == 16 {
                 self.nextButton.isHidden = true
@@ -214,5 +230,19 @@ class GamesViewController: UIViewController, UICollectionViewDataSource, GameCel
             
         }
     }
-    
+    func manageWinOrEliminated(_ text: String) {
+        self.collectionView.isHidden = true
+        self.previousButton.isHidden = true
+        self.nextButton.isHidden = true
+        self.weekNumLabel.isHidden = true
+        self.playersLeftLabel.isHidden = true
+        let screen = UIScreen.main.bounds
+        let label = UILabel(frame: CGRect(x: (screen.width/2)-150, y: screen.height/2-15, width: 300, height: 30))
+        label.text = text
+        label.textColor = UIColor.white
+        label.font = UIFont(descriptor: label.font.fontDescriptor, size: 30)
+        label.textAlignment = .center
+        label.isHidden = false
+        view.addSubview(label)
+    }
 }

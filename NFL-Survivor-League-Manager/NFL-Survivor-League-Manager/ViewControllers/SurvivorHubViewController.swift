@@ -105,6 +105,7 @@ class SurvivorHubViewController: UIViewController, UITableViewDelegate, UITableV
             let destination = segue.destination as! UINavigationController
             let vc = destination.topViewController as! OwnerDetailsViewController
             vc.league = self.leagueToSend
+            
         }
         if segue.identifier == "toGamePickerView" {
             let destination = segue.destination as! UINavigationController
